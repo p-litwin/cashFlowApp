@@ -34,7 +34,10 @@
 bin/
 obj/
 
-addressBook-obj.*
+CashFlowApp.cbp
+*.layout
+*.depend
+
 
 *.txt
 
