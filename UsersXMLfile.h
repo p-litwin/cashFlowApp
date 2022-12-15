@@ -9,11 +9,13 @@
 using namespace std;
 
 class UsersXMLFile {
-    string USERS_FILE_NAME;
+    const string USERS_FILE_NAME;
     User readSingleUserDataFromFile(CMarkup *file);
 public:
-    vector<User> loadUsersFromFile();
+    UsersXMLFile(string fileName)
+    : USERS_FILE_NAME(fileName) {};
 
+    vector<User> loadUsersFromFile();
 };
 
 

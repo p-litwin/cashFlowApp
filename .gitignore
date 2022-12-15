@@ -37,7 +37,7 @@ obj/
 CashFlowApp.cbp
 *.layout
 *.depend
-
+users.xml
 
 *.txt
 

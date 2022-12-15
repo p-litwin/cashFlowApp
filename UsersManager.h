@@ -10,12 +10,13 @@ using namespace std;
 
 class UsersManager {
     vector<User> users;
-    UsersXMLFile usersXmlFile;
+    UsersXMLFile usersXMLFile;
     int lastUserId;
 
 public:
-    UsersManager() {
-    users = usersXmlFile.loadUsersFromFile();
+    UsersManager(string usersFileName)
+    : usersXMLFile(usersFileName) {
+    users = usersXMLFile.loadUsersFromFile();
     }
     void displayAllUsersData();
 

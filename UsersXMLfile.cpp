@@ -2,17 +2,20 @@
 
 vector<User> UsersXMLFile::loadUsersFromFile() {
     vector<User> users;
+    bool isXmlFileOpened;
     User singleUser;
     CMarkup xmlFile;
     CMarkup* xmlFilePtr = &xmlFile;
-    xmlFile.Load("users.xml");
+    isXmlFileOpened = xmlFile.Load(USERS_FILE_NAME);
 
-    xmlFile.FindElem("users");
-    xmlFile.IntoElem();
+    if (isXmlFileOpened ==  true) {
+        xmlFile.FindElem("users");
+        xmlFile.IntoElem();
 
-    while (xmlFile.FindElem("user") ) {
-        singleUser = readSingleUserDataFromFile(xmlFilePtr);
-        users.push_back(singleUser);
+        while (xmlFile.FindElem("user") ) {
+            singleUser = readSingleUserDataFromFile(xmlFilePtr);
+            users.push_back(singleUser);
+        }
     }
 
     return users;
