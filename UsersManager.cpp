@@ -10,3 +10,11 @@ void UsersManager::displayAllUsersData() {
         cout << users[2].getPassword() << endl;
     }
 }
+
+int UsersManager::getLastUserId() {
+    return lastUserId;
+}
+
+void UsersManager::setLastUserId(int userId) {
+    this -> lastUserId = userId;
+}

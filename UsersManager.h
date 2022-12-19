@@ -15,11 +15,13 @@ class UsersManager {
 
 public:
     UsersManager(string usersFileName)
-    : usersXMLFile(usersFileName) {
-    users = usersXMLFile.loadUsersFromFile();
+        : usersXMLFile(usersFileName) {
+        users = usersXMLFile.loadUsersFromFile();
+        lastUserId = usersXMLFile.getLastUserId();
     }
     void displayAllUsersData();
-
+    int getLastUserId();
+    void setLastUserId(int userId);
 };
 
 
