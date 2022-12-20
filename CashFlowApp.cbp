@@ -34,6 +34,8 @@
 		</Compiler>
 		<Unit filename="CashFlowApp.cpp" />
 		<Unit filename="CashFlowApp.h" />
+		<Unit filename="CommonMethods.cpp" />
+		<Unit filename="CommonMethods.h" />
 		<Unit filename="Markup.cpp" />
 		<Unit filename="Markup.h" />
 		<Unit filename="User.cpp" />
