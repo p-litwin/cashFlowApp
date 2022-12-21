@@ -69,3 +69,37 @@ bool UsersManager::isLoginTaken(string login) {
     }
     return false;
 }
+
+void UsersManager::userLogon() {
+    User user;
+    string login = "", password = "";
+
+    cout << "Podaj login: ";
+    login = CommonMethods::getLineOfText();
+
+    vector <User>::iterator itr = users.begin();
+    while (itr != users.end()) {
+        if (itr -> getLogin() == login) {
+            for (int trialCount = 3; trialCount > 0; trialCount--) {
+                cout << "Podaj haslo. Pozostalo prob: " << trialCount << ": ";
+                password = CommonMethods::getLineOfText();
+
+                if (itr -> getPassword() == password) {
+                    cout << endl << "Zalogowales sie." << endl << endl;
+                    system("pause");
+                    loggedUserId = itr -> getUserId();
+                    return;
+                }
+            }
+            cout << "Wprowadzono 3 razy bledne haslo." << endl;
+            system("pause");
+            loggedUserId = 0;
+            return;
+        }
+        itr++;
+    }
+    cout << "Nie ma uzytkownika z takim loginem" << endl << endl;
+    system("pause");
+    loggedUserId = 0;
+    return;
+}

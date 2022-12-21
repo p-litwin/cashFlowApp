@@ -13,6 +13,7 @@ class UsersManager {
     vector<User> users;
     UsersXMLFile usersXMLFile;
     int lastUserId;
+    int loggedUserId;
 
     User inputNewUserData();
     int generateNewUserId();
@@ -28,6 +29,7 @@ public:
     void registerNewUser();
     int getLastUserId();
     void setLastUserId(int userId);
+    void userLogon();
 
 
 };
