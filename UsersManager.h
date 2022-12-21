@@ -5,6 +5,7 @@
 #include <vector>
 #include "User.h"
 #include "UsersXMLfile.h"
+#include "CommonMethods.h"
 
 using namespace std;
 
@@ -13,12 +14,21 @@ class UsersManager {
     UsersXMLFile usersXMLFile;
     int lastUserId;
 
+    User inputNewUserData();
+    int generateNewUserId();
+    bool isLoginTaken(string login);
+
 public:
     UsersManager(string usersFileName)
-    : usersXMLFile(usersFileName) {
-    users = usersXMLFile.loadUsersFromFile();
+        : usersXMLFile(usersFileName) {
+        users = usersXMLFile.loadUsersFromFile();
+        lastUserId = usersXMLFile.getLastUserId();
     }
     void displayAllUsersData();
+    void registerNewUser();
+    int getLastUserId();
+    void setLastUserId(int userId);
+
 
 };
 

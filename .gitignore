@@ -34,10 +34,10 @@
 bin/
 obj/
 
-CashFlowApp.cbp
 *.layout
+*.cbp
 *.depend
-users.xml
+users*.xml
 
 *.txt
 
