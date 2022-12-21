@@ -103,3 +103,14 @@ void UsersManager::userLogon() {
     loggedUserId = 0;
     return;
 }
+
+bool UsersManager::isUserLoggedIn() {
+    if (loggedUserId != 0)
+        return true;
+    else
+        return false;
+}
+
+void UsersManager::logoutUser() {
+    loggedUserId = 0;
+}

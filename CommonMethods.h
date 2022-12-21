@@ -9,7 +9,7 @@ class CommonMethods {
 
 public:
     static string getLineOfText();
-
+    static char getSingleCharacter();
 };
 
 

@@ -30,7 +30,8 @@ public:
     int getLastUserId();
     void setLastUserId(int userId);
     void userLogon();
-
+    bool isUserLoggedIn();
+    void logoutUser();
 
 };
 
