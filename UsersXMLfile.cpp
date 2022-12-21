@@ -2,17 +2,17 @@
 
 vector<User> UsersXMLFile::loadUsersFromFile() {
     vector<User> users;
-    bool isXmlFileOpened;
+    bool isxmlDocumentOpened;
     User singleUser;
-    CMarkup xmlFile;
-    CMarkup* xmlFilePtr = &xmlFile;
-    isXmlFileOpened = xmlFile.Load(USERS_FILE_NAME);
-    if (isXmlFileOpened ==  true) {
-        xmlFile.FindElem("users");
-        xmlFile.IntoElem();
+    CMarkup xmlDocument;
+    CMarkup* xmlDocumentPtr = &xmlDocument;
+    isxmlDocumentOpened = xmlDocument.Load(USERS_FILE_NAME);
+    if (isxmlDocumentOpened ==  true) {
+        xmlDocument.FindElem("users");
+        xmlDocument.IntoElem();
 
-        while (xmlFile.FindElem("user") ) {
-            singleUser = readSingleUserDataFromFile(xmlFilePtr);
+        while (xmlDocument.FindElem("user") ) {
+            singleUser = readSingleUserDataFromFile(xmlDocumentPtr);
             lastUserId = singleUser.getUserId();
             users.push_back(singleUser);
         }
@@ -33,4 +33,21 @@ User UsersXMLFile::readSingleUserDataFromFile(CMarkup *file) {
 
 int UsersXMLFile::getLastUserId() {
     return lastUserId;
+}
+
+void UsersXMLFile::saveUsersToXMLfile(User newUser) {
+    CMarkup xmlDocument;
+    xmlDocument.Load("users.xml");
+    if (xmlDocument.FindElem("users") == false) {
+        xmlDocument.SetDoc("<?xml version='1.0'?>\n");
+        xmlDocument.AddElem("users");
+    }
+    xmlDocument.IntoElem();
+    xmlDocument.AddElem("user");
+    xmlDocument.AddAttrib("id", newUser.getUserId());
+    xmlDocument.AddAttrib("name", newUser.getUserName());
+    xmlDocument.AddAttrib("surname", newUser.getUserSurname());
+    xmlDocument.AddAttrib("login", newUser.getLogin());
+    xmlDocument.AddAttrib("password", newUser.getPassword());
+    xmlDocument.Save("users.xml");
 }

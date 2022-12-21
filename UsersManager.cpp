@@ -24,7 +24,7 @@ void UsersManager::registerNewUser() {
     User newUser = inputNewUserData();
     users.push_back(newUser);
     lastUserId = newUser.getUserId();
-    //plikZUzytkownikami.dopiszUzytkownikaDoPliku(uzytkownik);
+    usersXMLFile.saveUsersToXMLfile(newUser);
     cout << endl << "Konto zalozono pomyslnie" << endl << endl;
     system("pause");
 }

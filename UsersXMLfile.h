@@ -10,8 +10,10 @@ using namespace std;
 
 class UsersXMLFile {
     const string USERS_FILE_NAME;
-    User readSingleUserDataFromFile(CMarkup *file);
     int lastUserId;
+
+    User readSingleUserDataFromFile(CMarkup *file);
+
 public:
     UsersXMLFile(string fileName)
         : USERS_FILE_NAME(fileName) {
@@ -20,6 +22,7 @@ public:
 
     vector<User> loadUsersFromFile();
     int getLastUserId();
+    void saveUsersToXMLfile(User newUser);
 };
 
 

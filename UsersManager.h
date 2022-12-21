@@ -25,9 +25,10 @@ public:
         lastUserId = usersXMLFile.getLastUserId();
     }
     void displayAllUsersData();
+    void registerNewUser();
     int getLastUserId();
     void setLastUserId(int userId);
-    void registerNewUser();
+
 
 };
 

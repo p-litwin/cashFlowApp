@@ -5,31 +5,35 @@ incomesExpenses:  IncomesExpenses
 --
 CashFlowApplication()
 +userLogon(): void
-- displayLogonMenu(): void</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>1536</x><y>192</y><w>216</w><h>204</h></coordinates><panel_attributes>UsersManager
+- displayLogonMenu(): void</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>1536</x><y>192</y><w>264</w><h>252</h></coordinates><panel_attributes>UsersManager
 --
 users: &lt;vector&gt;User
-lasUserId: int
 usersXMLFile: UsersXMLFile
+lasUserId: int
 --
 UsersManager()
-+ registerNewUser(): void
-+ userLogon(): void
 + displayAllUsersData(): void
-- displayUserMenu(): void
-- changePassword():  void</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>1236</x><y>1044</y><w>216</w><h>132</h></coordinates><panel_attributes>XMLFile
++ registerNewUser(): void
++ getLastUserId(): int
++ setLastUserId(int): void
+- inputNewUserData(): User
+- generateNewUserId(): int
+- isLoginTaken(string): bool
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>1236</x><y>1044</y><w>216</w><h>132</h></coordinates><panel_attributes>XMLFile
 --
 xmlFilename: String
 --
 + loadItemsFromFile: Void
-+ addNewItemToFile(): Void</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>1560</x><y>732</y><w>216</w><h>180</h></coordinates><panel_attributes>UsersXMLFile
++ addNewItemToFile(): Void</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>1560</x><y>732</y><w>336</w><h>180</h></coordinates><panel_attributes>UsersXMLFile
 --
 USERS_XML_FILENAME: String
 lastUserId: int
 --
 UsersXMLFile()
-+ loadAllUsersFromFile(): Void
-+ getLastUserId: int
-+ saveNewUserToFile</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>540</x><y>744</y><w>300</w><h>120</h></coordinates><panel_attributes>IncomesXMLFile
++ loadAllUsersFromFile(): vector&lt;User&gt;
++ getLastUserId(): int
++ saveUsersToXMLfile(): void
+- readSingleUserDataFromFile(CMarkup): User</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>540</x><y>744</y><w>300</w><h>120</h></coordinates><panel_attributes>IncomesXMLFile
 --
 INCOMES_XML_FILENAME: String
 --
@@ -41,7 +45,7 @@ EXPENSES_XML_FILENAME: String
 --
 ExpensesXMLFile()
 + saveNewExpenseToFile(): Void
-+ loadAllExpensesOfLoggedUser(): Void</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>1896</x><y>180</y><w>228</w><h>300</h></coordinates><panel_attributes>User
++ loadAllExpensesOfLoggedUser(): Void</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>1896</x><y>180</y><w>228</w><h>312</h></coordinates><panel_attributes>User
 --
 userId: Integer
 name: string
@@ -52,12 +56,13 @@ password: string
 + getUserId(); String
 + getUserName(): String
 + getPassword(): String
-+ getName(): String
-+ getSurname(): String
-+ setLogin(): String
-+ setPassword(): String
-+ setName(): String
-+ setSurname(): String</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>720</x><y>252</y><w>300</w><h>336</h></coordinates><panel_attributes>IncomesExpensesManager
++ getUserName(): String
++ getUserSurname(): String
++ setUserId(int): void
++ setLogin(string): void
++ setPassword(string): void
++ setName(string): void
++ setSurname(string): void</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>720</x><y>252</y><w>300</w><h>336</h></coordinates><panel_attributes>IncomesExpensesManager
 --
 incomes:  &lt;vector&gt;IncomeExpense
 expenses: &lt;vector&gt;IncomeExpense
@@ -76,7 +81,7 @@ balance: float
 + displayLastMonthCashFlow():Void
 + displaySelectedPeriodCashFlow(): Void
 - calculateBalance():  float
-</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>852</x><y>84</y><w>276</w><h>192</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-</panel_attributes><additional_attributes>210;10;10;10;10;140</additional_attributes></element><element><id>Relation</id><coordinates><x>756</x><y>576</y><w>36</w><h>192</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;-</panel_attributes><additional_attributes>10;10;10;140</additional_attributes></element><element><id>Relation</id><coordinates><x>960</x><y>576</y><w>36</w><h>192</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;-</panel_attributes><additional_attributes>10;10;10;140</additional_attributes></element><element><id>Relation</id><coordinates><x>192</x><y>408</y><w>552</w><h>36</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;-</panel_attributes><additional_attributes>440;10;10;10</additional_attributes></element><element><id>Relation</id><coordinates><x>1632</x><y>384</y><w>36</w><h>372</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;-</panel_attributes><additional_attributes>10;10;10;290</additional_attributes></element><element><id>Relation</id><coordinates><x>1740</x><y>264</y><w>180</w><h>36</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;-</panel_attributes><additional_attributes>10;10;130;10</additional_attributes></element><element><id>Relation</id><coordinates><x>1368</x><y>72</y><w>288</w><h>144</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;-</panel_attributes><additional_attributes>10;10;220;10;220;100</additional_attributes></element><element><id>UMLClass</id><coordinates><x>1116</x><y>492</y><w>360</w><h>168</h></coordinates><panel_attributes>/CommonMethods/
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>852</x><y>84</y><w>276</w><h>192</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-</panel_attributes><additional_attributes>210;10;10;10;10;140</additional_attributes></element><element><id>Relation</id><coordinates><x>756</x><y>576</y><w>36</w><h>192</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;-</panel_attributes><additional_attributes>10;10;10;140</additional_attributes></element><element><id>Relation</id><coordinates><x>960</x><y>576</y><w>36</w><h>192</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;-</panel_attributes><additional_attributes>10;10;10;140</additional_attributes></element><element><id>Relation</id><coordinates><x>192</x><y>408</y><w>552</w><h>36</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;-</panel_attributes><additional_attributes>440;10;10;10</additional_attributes></element><element><id>Relation</id><coordinates><x>1632</x><y>432</y><w>36</w><h>324</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;-</panel_attributes><additional_attributes>10;10;10;250</additional_attributes></element><element><id>Relation</id><coordinates><x>1788</x><y>264</y><w>132</w><h>36</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;-</panel_attributes><additional_attributes>10;10;90;10</additional_attributes></element><element><id>Relation</id><coordinates><x>1368</x><y>72</y><w>288</w><h>144</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;-</panel_attributes><additional_attributes>10;10;220;10;220;100</additional_attributes></element><element><id>UMLClass</id><coordinates><x>1116</x><y>492</y><w>360</w><h>168</h></coordinates><panel_attributes>/CommonMethods/
 --
 _getLineOfTextFromTheUser()_
 _convertIntToStringWithLeadingZeros(int): string_
