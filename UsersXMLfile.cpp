@@ -51,3 +51,31 @@ void UsersXMLFile::saveUsersToXMLfile(User newUser) {
     xmlDocument.AddAttrib("password", newUser.getPassword());
     xmlDocument.Save("users.xml");
 }
+
+void UsersXMLFile::updatePasswordInXMLfile(int loggedUserId, string newPassword) {
+    CMarkup xml;
+    xml.Load("users.xml");
+    CMarkup *xmlDoc = & xml;
+    if (findUserElementById(*xmlDoc, loggedUserId)) {
+        xml.SetAttrib("password", newPassword);
+        xml.Save("users.xml");
+        cout << "Haslo zostalo pomyslnie zmienione" << endl;
+        system("Pause");
+    } else {
+        cout << "Uzytkownik nie zostal znaleziony w pliku XML." << endl;
+        system("Pause");
+    }
+}
+
+bool UsersXMLFile::findUserElementById(CMarkup &xml, int userId) {
+    string idAsText = to_string(userId);
+    xml.ResetPos();
+    xml.FindElem("users");
+    xml.IntoElem();
+    while (xml.FindElem("user")) {
+        if (xml.GetAttrib("id") == idAsText) {
+            return true;
+        }
+    }
+    return false;
+}

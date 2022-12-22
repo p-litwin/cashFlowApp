@@ -1,15 +1,16 @@
-<diagram program="umletino" version="15.0.0"><zoom_level>12</zoom_level><help_text></help_text><element><id>UMLClass</id><coordinates><x>1104</x><y>25</y><w>276</w><h>180</h></coordinates><panel_attributes>CashFlowApplication
+<diagram program="umletino" version="15.0.0"><zoom_level>12</zoom_level><help_text></help_text><element><id>UMLClass</id><coordinates><x>1104</x><y>0</y><w>276</w><h>180</h></coordinates><panel_attributes>CashFlowApplication
 --
 usersManager: UsersManager
 incomesExpenses:  IncomesExpenses
 --
 CashFlowApplication()
 +userLogon(): void
-- displayLogonMenu(): void</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>1536</x><y>217</y><w>264</w><h>252</h></coordinates><panel_attributes>UsersManager
+- displayLogonMenu(): void</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>1536</x><y>192</y><w>264</w><h>288</h></coordinates><panel_attributes>UsersManager
 --
 users: &lt;vector&gt;User
 usersXMLFile: UsersXMLFile
 lasUserId: int
+loggedUserId: int
 --
 UsersManager()
 + displayAllUsersData(): void
@@ -17,15 +18,16 @@ UsersManager()
 + getLastUserId(): int
 + setLastUserId(int): void
 + userLogon(): void
++ changePassword(): void
 - inputNewUserData(): User
 - generateNewUserId(): int
 - isLoginTaken(string): bool
-</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>1236</x><y>1069</y><w>216</w><h>132</h></coordinates><panel_attributes>XMLFile
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>1236</x><y>1044</y><w>216</w><h>132</h></coordinates><panel_attributes>XMLFile
 --
 xmlFilename: String
 --
 + loadItemsFromFile: Void
-+ addNewItemToFile(): Void</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>1560</x><y>757</y><w>336</w><h>180</h></coordinates><panel_attributes>UsersXMLFile
++ addNewItemToFile(): Void</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>1560</x><y>732</y><w>336</w><h>204</h></coordinates><panel_attributes>UsersXMLFile
 --
 USERS_XML_FILENAME: String
 lastUserId: int
@@ -34,19 +36,21 @@ UsersXMLFile()
 + loadAllUsersFromFile(): vector&lt;User&gt;
 + getLastUserId(): int
 + saveUsersToXMLfile(): void
-- readSingleUserDataFromFile(CMarkup): User</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>540</x><y>769</y><w>300</w><h>120</h></coordinates><panel_attributes>IncomesXMLFile
++ updatePasswordInXMLfile(int, string): void
+- readSingleUserDataFromFile(CMarkup): User
+- findUserElementById(CMarkup, int): bool</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>540</x><y>744</y><w>300</w><h>120</h></coordinates><panel_attributes>IncomesXMLFile
 --
 INCOMES_XML_FILENAME: String
 --
 IncomesXMLFile()
 + saveNewIncomeToFile: Void
-+ loadAllIncomesOfLoggedUser(): Void</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>924</x><y>769</y><w>252</w><h>120</h></coordinates><panel_attributes>ExpensesXMLFile
++ loadAllIncomesOfLoggedUser(): Void</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>924</x><y>744</y><w>252</w><h>120</h></coordinates><panel_attributes>ExpensesXMLFile
 --
 EXPENSES_XML_FILENAME: String
 --
 ExpensesXMLFile()
 + saveNewExpenseToFile(): Void
-+ loadAllExpensesOfLoggedUser(): Void</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>1896</x><y>205</y><w>228</w><h>312</h></coordinates><panel_attributes>User
++ loadAllExpensesOfLoggedUser(): Void</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>1896</x><y>180</y><w>228</w><h>312</h></coordinates><panel_attributes>User
 --
 userId: Integer
 name: string
@@ -63,7 +67,7 @@ password: string
 + setLogin(string): void
 + setPassword(string): void
 + setName(string): void
-+ setSurname(string): void</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>720</x><y>277</y><w>300</w><h>336</h></coordinates><panel_attributes>IncomesExpensesManager
++ setSurname(string): void</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>720</x><y>252</y><w>300</w><h>336</h></coordinates><panel_attributes>IncomesExpensesManager
 --
 incomes:  &lt;vector&gt;IncomeExpense
 expenses: &lt;vector&gt;IncomeExpense
@@ -82,11 +86,11 @@ balance: float
 + displayLastMonthCashFlow():Void
 + displaySelectedPeriodCashFlow(): Void
 - calculateBalance():  float
-</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>852</x><y>109</y><w>276</w><h>192</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-</panel_attributes><additional_attributes>210;10;10;10;10;140</additional_attributes></element><element><id>Relation</id><coordinates><x>756</x><y>601</y><w>36</w><h>192</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;-</panel_attributes><additional_attributes>10;10;10;140</additional_attributes></element><element><id>Relation</id><coordinates><x>960</x><y>601</y><w>36</w><h>192</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;-</panel_attributes><additional_attributes>10;10;10;140</additional_attributes></element><element><id>Relation</id><coordinates><x>192</x><y>433</y><w>552</w><h>36</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;-</panel_attributes><additional_attributes>440;10;10;10</additional_attributes></element><element><id>Relation</id><coordinates><x>1632</x><y>457</y><w>36</w><h>324</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;-</panel_attributes><additional_attributes>10;10;10;250</additional_attributes></element><element><id>Relation</id><coordinates><x>1788</x><y>289</y><w>132</w><h>36</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;-</panel_attributes><additional_attributes>10;10;90;10</additional_attributes></element><element><id>Relation</id><coordinates><x>1368</x><y>97</y><w>288</w><h>144</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;-</panel_attributes><additional_attributes>10;10;220;10;220;100</additional_attributes></element><element><id>UMLClass</id><coordinates><x>1116</x><y>517</y><w>360</w><h>168</h></coordinates><panel_attributes>/CommonMethods/
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>852</x><y>84</y><w>276</w><h>192</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-</panel_attributes><additional_attributes>210;10;10;10;10;140</additional_attributes></element><element><id>Relation</id><coordinates><x>756</x><y>576</y><w>36</w><h>192</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;-</panel_attributes><additional_attributes>10;10;10;140</additional_attributes></element><element><id>Relation</id><coordinates><x>960</x><y>576</y><w>36</w><h>192</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;-</panel_attributes><additional_attributes>10;10;10;140</additional_attributes></element><element><id>Relation</id><coordinates><x>192</x><y>408</y><w>552</w><h>36</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;-</panel_attributes><additional_attributes>440;10;10;10</additional_attributes></element><element><id>Relation</id><coordinates><x>1632</x><y>468</y><w>36</w><h>288</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;-</panel_attributes><additional_attributes>10;10;10;220</additional_attributes></element><element><id>Relation</id><coordinates><x>1788</x><y>264</y><w>132</w><h>36</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;-</panel_attributes><additional_attributes>10;10;90;10</additional_attributes></element><element><id>Relation</id><coordinates><x>1368</x><y>72</y><w>288</w><h>144</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;-</panel_attributes><additional_attributes>10;10;220;10;220;100</additional_attributes></element><element><id>UMLClass</id><coordinates><x>1116</x><y>492</y><w>360</w><h>168</h></coordinates><panel_attributes>/CommonMethods/
 --
 _getLineOfTextFromTheUser()_
 _convertIntToStringWithLeadingZeros(int): string_
-</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>1008</x><y>565</y><w>132</w><h>36</h></coordinates><panel_attributes>lt=&lt;-</panel_attributes><additional_attributes>10;10;90;10</additional_attributes></element><element><id>UMLClass</id><coordinates><x>0</x><y>337</y><w>204</w><h>228</h></coordinates><panel_attributes>IncomeExpense
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>1008</x><y>540</y><w>132</w><h>36</h></coordinates><panel_attributes>lt=&lt;-</panel_attributes><additional_attributes>10;10;90;10</additional_attributes></element><element><id>UMLClass</id><coordinates><x>0</x><y>312</y><w>204</w><h>228</h></coordinates><panel_attributes>IncomeExpense
 --
 id: Integer
 date: String
@@ -98,7 +102,7 @@ amount: Float
 + getAmount: Float
 + setDate(): Void
 + setItem(): Void
-+ setAmount(): Void</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>1272</x><y>805</y><w>312</w><h>288</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>10;220;10;10;240;10</additional_attributes></element><element><id>Relation</id><coordinates><x>1044</x><y>877</y><w>240</w><h>216</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>180;160;180;100;10;100;10;10</additional_attributes></element><element><id>Relation</id><coordinates><x>660</x><y>877</y><w>600</w><h>264</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>480;200;10;200;10;10</additional_attributes></element><element><id>UMLClass</id><coordinates><x>1140</x><y>229</y><w>300</w><h>252</h></coordinates><panel_attributes>/Date/
++ setAmount(): Void</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>1272</x><y>780</y><w>312</w><h>288</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>10;220;10;10;240;10</additional_attributes></element><element><id>Relation</id><coordinates><x>1044</x><y>852</y><w>240</w><h>216</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>180;160;180;100;10;100;10;10</additional_attributes></element><element><id>Relation</id><coordinates><x>660</x><y>852</y><w>600</w><h>264</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>480;200;10;200;10;10</additional_attributes></element><element><id>UMLClass</id><coordinates><x>1140</x><y>204</y><w>300</w><h>252</h></coordinates><panel_attributes>/Date/
 --
 _+ isDateFormatCorrect(): bool_
 _+ isSelectedDateValid(): bool_
@@ -109,4 +113,4 @@ _+ getCurrentDate(): string_
 - getCurrentDay()::int
 - getCurrentMonth(): int
 - getcurrentYear(): int
-- getNumberOfDaysInMonth(int, int): int</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>1008</x><y>373</y><w>156</w><h>36</h></coordinates><panel_attributes>lt=&lt;-</panel_attributes><additional_attributes>10;10;110;10</additional_attributes></element></diagram>
+- getNumberOfDaysInMonth(int, int): int</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>1008</x><y>348</y><w>156</w><h>36</h></coordinates><panel_attributes>lt=&lt;-</panel_attributes><additional_attributes>10;10;110;10</additional_attributes></element></diagram>

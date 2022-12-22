@@ -73,7 +73,7 @@ void CashFlowApp::showMainMenu() {
 
             break;
         case '6':
-
+            usersManager.changePassword();
             break;
         case '7':
             logoutUser();

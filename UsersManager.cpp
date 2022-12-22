@@ -114,3 +114,17 @@ bool UsersManager::isUserLoggedIn() {
 void UsersManager::logoutUser() {
     loggedUserId = 0;
 }
+
+void UsersManager::changePassword() {
+    cout << "Podaj nowe haslo: ";
+    string newPassword = CommonMethods::getLineOfText();
+    for (size_t i = 0; i < users.size(); i++ ) {
+        if (users[i].getUserId() == loggedUserId) {
+            users[i].setPassword(newPassword);
+            usersXMLFile.updatePasswordInXMLfile(loggedUserId, newPassword);
+            return;
+        }
+    }
+    return;
+}
+
