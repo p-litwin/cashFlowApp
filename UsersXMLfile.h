@@ -13,6 +13,7 @@ class UsersXMLFile {
     int lastUserId;
 
     User readSingleUserDataFromFile(CMarkup *file);
+    bool findUserElementById(CMarkup &xml, int userId);
 
 public:
     UsersXMLFile(string fileName)
@@ -23,6 +24,8 @@ public:
     vector<User> loadUsersFromFile();
     int getLastUserId();
     void saveUsersToXMLfile(User newUser);
+    void updatePasswordInXMLfile(int loggedUserId, string newPassword);
+
 };
 
 
