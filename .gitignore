@@ -38,6 +38,8 @@ obj/
 *.cbp
 *.depend
 users*.xml
+incomes*.xml
+expenses*.xml
 
 *.txt
 

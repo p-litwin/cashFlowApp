@@ -3,6 +3,7 @@
 
 #include <iostream>
 #include "UsersManager.h"
+#include "IncomesExpensesManager.h"
 
 using namespace std;
 
