@@ -106,5 +106,7 @@ char CashFlowApp::chooseOptionFromMainMenu() {
 
 void CashFlowApp::logoutUser() {
     usersManager.logoutUser();
+    delete incomesExpensesManager;
+    incomesExpensesManager = NULL;
     showLogonMenu();
     }
