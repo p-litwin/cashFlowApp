@@ -10,6 +10,8 @@ class CommonMethods {
 public:
     static string getLineOfText();
     static char getSingleCharacter();
+    static string getCurrentDate();
+    static string convertIntToStringWithLeadingZero(int number);
 };
 
 

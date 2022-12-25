@@ -4,6 +4,7 @@
 #include <iostream>
 #include "UsersManager.h"
 #include "IncomesExpensesManager.h"
+#include "Date.h"
 
 using namespace std;
 

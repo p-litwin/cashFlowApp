@@ -23,3 +23,13 @@ char CommonMethods::getSingleCharacter() {
     }
     return character;
 }
+
+string CommonMethods::convertIntToStringWithLeadingZero(int number) {
+    string numberAsText;
+    if (number < 9) {
+        numberAsText = "0" + to_string(number);
+    } else {
+        numberAsText = to_string(number);
+    }
+    return numberAsText;
+}
