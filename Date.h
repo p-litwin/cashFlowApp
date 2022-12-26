@@ -4,6 +4,7 @@
 #include <iostream>
 #include <vector>
 #include <ctime>
+#include <regex>
 #include "CommonMethods.h"
 
 using namespace std;
@@ -15,22 +16,29 @@ class Date {
     int currentYear;
     int currentMonthLength;
 
-    int getCurrentDay();
-    int getCurrentMonth();
-    int getCurrentYear();
-    int daysInCurrentMonth();
-    int getNumberOfDaysInMonth(int month, int year);
-
+    int determineCurrentDay();
+    int determineCurrentMonth();
+    int determineCurrentYear();
+    int determineMonthLength(int month, int year);
+    bool isSelectedDateValid(string date);
+    bool isDateFormatCorrect(string date);
+    bool isInputMonthCorrect(int month);
+    bool isInputYearCorrect(int year);
+    bool isInputDayCorrect(int year,int month, int day);
 public:
     Date() {
         currentDate = determineCurrentDate();
-        currentDay = getCurrentDay();
-        currentMonth = getCurrentMonth();
-        currentYear = getCurrentYear();
-        currentMonthLength = getNumberOfDaysInMonth(currentMonth, currentYear);
+        currentDay = determineCurrentDay();
+        currentMonth = determineCurrentMonth();
+        currentYear = determineCurrentYear();
+        currentMonthLength = determineMonthLength(currentMonth, currentYear);
     };
     string determineCurrentDate();
-
+    string getCurrentDate();
+    int getCurrentDay();
+    int getCurrentMonth();
+    int getCurrentYear();
+    string getDateFromUser();
 };
 
 

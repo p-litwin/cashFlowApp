@@ -2,9 +2,9 @@
 
 string Date::determineCurrentDate() {
 
-    int currentYear = getCurrentYear();
-    int currentMonth = getCurrentMonth();
-    int currentDay = getCurrentDay();
+    int currentYear = determineCurrentYear();
+    int currentMonth = determineCurrentMonth();
+    int currentDay = determineCurrentDay();
     string currentYearAsText = CommonMethods::convertIntToStringWithLeadingZero(currentYear);
     string currentMonthAsText = CommonMethods::convertIntToStringWithLeadingZero(currentMonth);
     string currentDayAsText = CommonMethods::convertIntToStringWithLeadingZero(currentDay);
@@ -12,28 +12,28 @@ string Date::determineCurrentDate() {
     return currentDateAsText;
 }
 
-int Date::getCurrentYear () {
+int Date::determineCurrentYear () {
     time_t t = time(0);
     tm *const pTInfo = localtime(&t);
     int currentYear = 1900 + pTInfo->tm_year;
     return currentYear;
 }
 
-int Date:: getCurrentMonth() {
+int Date:: determineCurrentMonth() {
     time_t t = time(0);
     tm *const pTInfo = localtime(&t);
     int currentMonth = 1 + pTInfo->tm_mon;
     return currentMonth;
 }
 
-int Date:: getCurrentDay() {
+int Date:: determineCurrentDay() {
     time_t t = time(0);
     tm *const pTInfo = localtime(&t);
     int currentDay = pTInfo->tm_mday;
     return currentDay;
 }
 
-int  Date::getNumberOfDaysInMonth(int month, int year) {
+int  Date::determineMonthLength(int month, int year) {
     //leap year condition, if month is 2
     if( month == 2) {
         if((year%400==0) || (year%4==0 && year%100!=0))
@@ -43,8 +43,79 @@ int  Date::getNumberOfDaysInMonth(int month, int year) {
     }
     //months which has 31 days
     else if(month == 1 || month == 3 || month == 5 || month == 7 || month == 8
-            ||month == 10 || month==12)
+            ||month == 10 || month==12) {
         return 31;
-    else
+    } else {
         return 30;
+    }
+}
+
+string Date::getCurrentDate() {
+    return currentDate;
+}
+
+string Date::getDateFromUser() {
+    string date;
+    do {
+        date = CommonMethods::getMandatoryLineOfText("Podaj date w formacie yyyy-mm-dd");
+        if (isSelectedDateValid(date) == false) {
+            cout << "Podana data ma nieprawidlowy format lub jest spoza zakresu 2000-01-01 - ostatni dzien biezacego miesiaca." << endl;
+        }
+    } while (isSelectedDateValid(date) == false);
+    return date;
+}
+
+bool Date::isDateFormatCorrect(string date) {
+    regex correctDateFormat("[2-9][0-9][0-9][0-9]-[0-9][1-9]-[0-3][0-9]");
+    if (regex_match(date, correctDateFormat)) {
+        return true;
+    }
+    return false;
+}
+
+bool Date::isSelectedDateValid(string date) {
+
+    if (isDateFormatCorrect(date) == false) {
+        return false;
+    }
+
+    int inputYear = stoi(date.substr(0,4));
+    int inputMonth = stoi(date.substr(5,6));
+    int inputDay = stoi(date.substr(8,9));
+    if (isInputYearCorrect(inputYear) && isInputMonthCorrect(inputMonth) && isInputDayCorrect(inputYear, inputMonth, inputDay)) {
+        return true;
+    }
+    return false;
+
+}
+
+bool Date::isInputMonthCorrect(int month) {
+    if (month >= 1 && month <= getCurrentMonth()) {
+        return true;
+    }
+    return false;
+}
+
+bool Date::isInputYearCorrect(int year) {
+    if (year >= 2000 && year <= getCurrentYear()) {
+        return true;
+    }
+    return false;
+}
+
+bool Date::isInputDayCorrect(int year,int month, int day) {
+    if (day >= 1 && day <= determineMonthLength(year,  month)) {
+        return true;
+    }
+    return false;
+}
+
+int Date::getCurrentDay() {
+    return currentDay;
+}
+int Date::getCurrentMonth() {
+    return currentMonth;
+}
+int Date::getCurrentYear() {
+    return currentYear;
 }
