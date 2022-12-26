@@ -5,12 +5,15 @@
 #include <vector>
 #include "Income.h"
 #include "Expense.h"
+#include "Date.h"
 
 using namespace std;
 
 class IncomesExpensesManager {
+    int loggedUserId;
     vector<Income> incomes;
     vector<Expense> expenses;
+    Date date;
     int lastIncomeId;
     int lastExpenseId;
     float totalIncomes;
@@ -23,7 +26,9 @@ public:
         lastExpenseId = 0;
     };
     Income addNewIncome();
-    Expense addNewExpense();
+    void addNewExpense();
+    void displayExpense(int index);
+    int setLoggedUserId(int id);
 
 };
 

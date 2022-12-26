@@ -28,6 +28,7 @@ public:
     void displayAllUsersData();
     void registerNewUser();
     int getLastUserId();
+    int getLoggedUserId();
     void setLastUserId(int userId);
     void userLogon();
     bool isUserLoggedIn();
