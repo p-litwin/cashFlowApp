@@ -11,7 +11,6 @@ class CommonMethods {
 public:
     static string getLineOfText();
     static char getSingleCharacter();
-    static string getCurrentDate();
     static string convertIntToStringWithLeadingZero(int number);
     static string getMandatoryLineOfText(string prompt);
     static float getMandatoryFloatValue();
