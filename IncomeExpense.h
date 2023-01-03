@@ -19,6 +19,7 @@ public:
     string getDate();
     string getItem();
     float getAmount();
+    int getUserId();
     void setUserId(int userId);
     void setId(int id);
     void setDate(string date);

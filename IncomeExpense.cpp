@@ -3,6 +3,10 @@
 int IncomeExpense::getId() {
     return id;
 }
+
+int IncomeExpense::getUserId() {
+    return userId;
+}
 string IncomeExpense::getDate() {
     return date;
 }
@@ -25,6 +29,6 @@ void IncomeExpense::setAmount(float amount) {
     this -> amount = amount;
 }
 
-void IncomeExpense::setUserId(int userIsd) {
-    this -> userId = id;
+void IncomeExpense::setUserId(int userId) {
+    this -> userId = userId;
 }
