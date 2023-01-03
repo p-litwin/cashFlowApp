@@ -36,8 +36,11 @@ obj/
 
 *.layout
 *.cbp
+CashFlowApp.cbp
 *.depend
 users*.xml
+incomes*.xml
+expenses*.xml
 
 *.txt
 

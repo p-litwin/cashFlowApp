@@ -128,3 +128,6 @@ void UsersManager::changePassword() {
     return;
 }
 
+int UsersManager::getLoggedUserId() {
+    return loggedUserId;
+}

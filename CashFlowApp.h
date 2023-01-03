@@ -3,11 +3,14 @@
 
 #include <iostream>
 #include "UsersManager.h"
+#include "IncomesExpensesManager.h"
+#include "Date.h"
 
 using namespace std;
 
 class CashFlowApp {
     UsersManager usersManager;
+    IncomesExpensesManager *incomesExpensesManager;
     const string USERS_FILE_NAME;
 
     void showLogonMenu();
@@ -19,9 +22,12 @@ class CashFlowApp {
 public:
     CashFlowApp(string usersFileName = "users.xml"):
         usersManager(usersFileName) {
+        incomesExpensesManager = NULL;
         showLogonMenu();
     };
     ~CashFlowApp() {
+        delete incomesExpensesManager;
+        incomesExpensesManager = NULL;
     }
     void userLogon();
 

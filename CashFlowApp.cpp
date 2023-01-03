@@ -46,6 +46,7 @@ char CashFlowApp::chooseOptionFromLogonMenu() {
 void CashFlowApp::userLogon() {
     usersManager.userLogon();
     if (usersManager.isUserLoggedIn()) {
+        incomesExpensesManager = new IncomesExpensesManager(usersManager.getLoggedUserId());
         //load incomes and expenses to the memory
         showMainMenu();
     }
@@ -58,10 +59,10 @@ void CashFlowApp::showMainMenu() {
         selection = chooseOptionFromMainMenu();
         switch (selection) {
         case '1':
-
+            incomesExpensesManager -> addNewIncome();
             break;
         case '2':
-
+            incomesExpensesManager -> addNewExpense();
             break;
         case '3':
 
@@ -106,5 +107,7 @@ char CashFlowApp::chooseOptionFromMainMenu() {
 
 void CashFlowApp::logoutUser() {
     usersManager.logoutUser();
+    delete incomesExpensesManager;
+    incomesExpensesManager = NULL;
     showLogonMenu();
     }
