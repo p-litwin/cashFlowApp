@@ -25,9 +25,10 @@ public:
         lastIncomeId = 0;
         lastExpenseId = 0;
     };
-    Income addNewIncome();
     void addNewExpense();
+    void addNewIncome();
     void displayExpense(int index);
+    void displayIncome(int index);
     int setLoggedUserId(int id);
 
 };
