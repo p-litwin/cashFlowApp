@@ -22,7 +22,7 @@ class Date {
     int determineMonthLength(int month, int year);
     bool isSelectedDateValid(string date);
     bool isDateFormatCorrect(string date);
-    bool isInputMonthCorrect(int month);
+    bool isInputMonthCorrect(int year, int month);
     bool isInputYearCorrect(int year);
     bool isInputDayCorrect(int year,int month, int day);
 public:

@@ -82,15 +82,18 @@ bool Date::isSelectedDateValid(string date) {
     int inputYear = stoi(date.substr(0,4));
     int inputMonth = stoi(date.substr(5,6));
     int inputDay = stoi(date.substr(8,9));
-    if (isInputYearCorrect(inputYear) && isInputMonthCorrect(inputMonth) && isInputDayCorrect(inputYear, inputMonth, inputDay)) {
+    if (isInputYearCorrect(inputYear) && isInputMonthCorrect(inputYear, inputMonth) && isInputDayCorrect(inputYear, inputMonth, inputDay)) {
         return true;
     }
     return false;
 
 }
 
-bool Date::isInputMonthCorrect(int month) {
-    if (month >= 1 && month <= getCurrentMonth()) {
+bool Date::isInputMonthCorrect(int year, int month) {
+    bool isMonthInCurrentYearCorrect = (year == getCurrentYear() && month >= 1 && month <= getCurrentMonth() );
+    bool isMonthInEarlierYearCorrect = (year < getCurrentYear() && month >= 1);
+
+    if ( isMonthInCurrentYearCorrect || isMonthInEarlierYearCorrect ){
         return true;
     }
     return false;
