@@ -33,7 +33,7 @@ int Date:: determineCurrentDay() {
     return currentDay;
 }
 
-int  Date::determineMonthLength(int month, int year) {
+int  Date::determineMonthLength(int year, int month) {
     //leap year condition, if month is 2
     if( month == 2) {
         if((year%400==0) || (year%4==0 && year%100!=0))
@@ -86,7 +86,6 @@ bool Date::isSelectedDateValid(string date) {
         return true;
     }
     return false;
-
 }
 
 bool Date::isInputMonthCorrect(int year, int month) {
