@@ -40,12 +40,16 @@
 		<Unit filename="Date.h" />
 		<Unit filename="Expense.cpp" />
 		<Unit filename="Expense.h" />
+		<Unit filename="ExpensesXMLfile.cpp" />
+		<Unit filename="ExpensesXMLfile.h" />
 		<Unit filename="Income.cpp" />
 		<Unit filename="Income.h" />
 		<Unit filename="IncomeExpense.cpp" />
 		<Unit filename="IncomeExpense.h" />
 		<Unit filename="IncomesExpensesManager.cpp" />
 		<Unit filename="IncomesExpensesManager.h" />
+		<Unit filename="IncomesXMLfile.cpp" />
+		<Unit filename="IncomesXMLfile.h" />
 		<Unit filename="Markup.cpp" />
 		<Unit filename="Markup.h" />
 		<Unit filename="User.cpp" />
