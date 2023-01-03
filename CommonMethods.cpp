@@ -89,3 +89,9 @@ float CommonMethods::convertStringToFloat(string input) {
         return stof(input);
     }
 }
+
+string CommonMethods::convertFloatToString(float number) {
+    stringstream floatAsString;
+    floatAsString << fixed << setprecision(2) << number;
+    return floatAsString.str();
+}
