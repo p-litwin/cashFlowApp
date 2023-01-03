@@ -7,6 +7,7 @@
 #include "Expense.h"
 #include "Date.h"
 #include "ExpensesXMLfile.h"
+#include "IncomesXMLfile.h"
 
 using namespace std;
 

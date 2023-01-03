@@ -5,7 +5,7 @@ using namespace std;
 
 int main()
 {
-//    CashFlowApp cashFlowApp("users.xml");
+    CashFlowApp cashFlowApp("users.xml");
 //    IncomesExpensesManager incomesExpensesManager;
 //    incomesExpensesManager.addNewExpense();
 //    incomesExpensesManager.displayExpense(0);

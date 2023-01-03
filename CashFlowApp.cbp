@@ -36,6 +36,16 @@
 		<Unit filename="CashFlowApp.h" />
 		<Unit filename="CommonMethods.cpp" />
 		<Unit filename="CommonMethods.h" />
+		<Unit filename="Date.cpp" />
+		<Unit filename="Date.h" />
+		<Unit filename="Expense.cpp" />
+		<Unit filename="Expense.h" />
+		<Unit filename="Income.cpp" />
+		<Unit filename="Income.h" />
+		<Unit filename="IncomeExpense.cpp" />
+		<Unit filename="IncomeExpense.h" />
+		<Unit filename="IncomesExpensesManager.cpp" />
+		<Unit filename="IncomesExpensesManager.h" />
 		<Unit filename="Markup.cpp" />
 		<Unit filename="Markup.h" />
 		<Unit filename="User.cpp" />
@@ -44,10 +54,10 @@
 		<Unit filename="UsersManager.h" />
 		<Unit filename="UsersXMLfile.cpp" />
 		<Unit filename="UsersXMLfile.h" />
+		<Unit filename="expenses.xml" />
+		<Unit filename="incomes.xml" />
 		<Unit filename="main.cpp" />
 		<Unit filename="users.xml" />
-		<Unit filename="xmlFile.cpp" />
-		<Unit filename="xmlFile.h" />
 		<Extensions />
 	</Project>
 </CodeBlocks_project_file>
