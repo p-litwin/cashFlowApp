@@ -18,11 +18,13 @@ void IncomesExpensesManager::addNewExpense() {
     } while (selection != 'T' && selection != 't' && selection != 'N' && selection != 'n');
     item = CommonMethods::getMandatoryLineOfText("Podaj kategorie");
     amount = CommonMethods::getMandatoryFloatValue();
-    newExpense.setUserId(loggedUserId);
+    newExpense.setUserId(LOGGED_USER_ID);
     newExpense.setItem(item);
     newExpense.setAmount(amount);
     newExpense.setId(++lastExpenseId);
     expenses.push_back(newExpense);
+    ExpensesXMLFile expensesXMLfile("expenses.xml");
+    expensesXMLfile.saveExpensesToXMLfile(newExpense);
     cout << "Nowy wydatek zostal dodany." << endl;
     system("pause");
 }
@@ -45,7 +47,7 @@ void IncomesExpensesManager::addNewIncome() {
     } while (selection != 'T' && selection != 't' && selection != 'N' && selection != 'n');
     item = CommonMethods::getMandatoryLineOfText("Podaj kategorie");
     amount = CommonMethods::getMandatoryFloatValue();
-    newIncome.setUserId(loggedUserId);
+    newIncome.setUserId(LOGGED_USER_ID);
     newIncome.setItem(item);
     newIncome.setAmount(amount);
     newIncome.setId(++lastIncomeId);
@@ -66,8 +68,4 @@ void IncomesExpensesManager::displayIncome(int index) {
     cout << incomes[index].getDate() << endl;
     cout << incomes[index].getItem() << endl;
     cout << incomes[index].getAmount() << endl;
-}
-
-int IncomesExpensesManager::setLoggedUserId(int id) {
-    this -> loggedUserId = id;
 }
