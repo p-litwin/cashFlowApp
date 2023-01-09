@@ -1,4 +1,5 @@
-<diagram program="umletino" version="15.0.0"><zoom_level>13</zoom_level><help_text></help_text><element><id>UMLClass</id><coordinates><x>1352</x><y>338</y><w>429</w><h>247</h></coordinates><panel_attributes>CashFlowApp
+<diagram program="umletino" version="15.0.0"><zoom_level>13</zoom_level><help_text>
+</help_text><element><id>UMLClass</id><coordinates><x>1352</x><y>338</y><w>429</w><h>247</h></coordinates><panel_attributes>CashFlowApp
 --
 usersManager: UsersManager
 incomesExpensesManager:  IncomesExpensesManager
@@ -41,19 +42,15 @@ UsersXMLFile()
 + saveUsersToXMLfile(): void
 + updatePasswordInXMLfile(int, string): void
 - readSingleUserDataFromFile(CMarkup): User
-- findUserElementById(CMarkup, int): bool</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>676</x><y>1378</y><w>325</w><h>130</h></coordinates><panel_attributes>IncomesXMLFile
+- findUserElementById(CMarkup, int): bool</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>676</x><y>1131</y><w>312</w><h>234</h></coordinates><panel_attributes>IncomesXMLfile
 --
-INCOMES_XML_FILENAME: String
+incomesXMLdocument: CMarkup
 --
-IncomesXMLFile()
-+ saveIncomesToFile: Void
-+ loadAllIncomesOfLoggedUser(): Void</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>1092</x><y>1378</y><w>273</w><h>130</h></coordinates><panel_attributes>ExpensesXMLFile
+IncomesXMLFile()</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>1131</x><y>1131</y><w>325</w><h>234</h></coordinates><panel_attributes>ExpensesXMLfile
 --
-EXPENSES_XML_FILE_NAME: String
+
 --
-ExpensesXMLFile()
-+ saveExpensesToFile(): Void
-+ loadAllExpensesOfLoggedUser(): Void</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>2210</x><y>533</y><w>247</w><h>338</h></coordinates><panel_attributes>User
+ExpensesXMLFile()</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>2210</x><y>533</y><w>247</w><h>338</h></coordinates><panel_attributes>User
 --
 userId: Integer
 userName: string
@@ -70,12 +67,10 @@ password: string
 + setLogin(string): void
 + setPassword(string): void
 + setUserName(string): void
-+ setUserSurname(string): void</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>871</x><y>611</y><w>325</w><h>455</h></coordinates><panel_attributes>IncomesExpensesManager
++ setUserSurname(string): void</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>871</x><y>611</y><w>325</w><h>429</h></coordinates><panel_attributes>IncomesExpensesManager
 --
 incomes:  &lt;vector&gt;Income
 expenses: &lt;vector&gt;Expense
-incomesXMLFile: IncomesXMLFile
-expensesXMLFile: ExpensesXMLFile
 LOGGED_USER_ID: int
 date: Date
 lastIncomeId: Integer
@@ -94,7 +89,7 @@ IncomesExpensesManager()
 + displayLastMonthCashFlow():Void
 + displaySelectedPeriodCashFlow(): Void
 - calculateBalance():  float
-</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>1014</x><y>429</y><w>364</w><h>208</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-</panel_attributes><additional_attributes>260;10;10;10;10;140</additional_attributes></element><element><id>Relation</id><coordinates><x>910</x><y>1053</y><w>39</w><h>351</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;-</panel_attributes><additional_attributes>10;10;10;250</additional_attributes></element><element><id>Relation</id><coordinates><x>1131</x><y>1053</y><w>39</w><h>351</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;-</panel_attributes><additional_attributes>10;10;10;250</additional_attributes></element><element><id>Relation</id><coordinates><x>598</x><y>845</y><w>299</w><h>39</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;-</panel_attributes><additional_attributes>210;10;10;10</additional_attributes></element><element><id>Relation</id><coordinates><x>1924</x><y>910</y><w>39</w><h>429</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;-</panel_attributes><additional_attributes>10;10;10;310</additional_attributes></element><element><id>Relation</id><coordinates><x>2093</x><y>624</y><w>143</w><h>39</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;-</panel_attributes><additional_attributes>10;10;90;10</additional_attributes></element><element><id>Relation</id><coordinates><x>1768</x><y>416</y><w>182</w><h>156</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;-</panel_attributes><additional_attributes>10;10;120;10;120;100</additional_attributes></element><element><id>UMLClass</id><coordinates><x>1365</x><y>871</y><w>390</w><h>221</h></coordinates><panel_attributes>/CommonMethods/
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>1014</x><y>429</y><w>364</w><h>208</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-</panel_attributes><additional_attributes>260;10;10;10;10;140</additional_attributes></element><element><id>Relation</id><coordinates><x>910</x><y>1027</y><w>39</w><h>130</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;-</panel_attributes><additional_attributes>10;10;10;80</additional_attributes></element><element><id>Relation</id><coordinates><x>1131</x><y>1027</y><w>39</w><h>130</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;-</panel_attributes><additional_attributes>10;10;10;80</additional_attributes></element><element><id>Relation</id><coordinates><x>598</x><y>845</y><w>299</w><h>39</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;-</panel_attributes><additional_attributes>210;10;10;10</additional_attributes></element><element><id>Relation</id><coordinates><x>1924</x><y>910</y><w>39</w><h>429</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;-</panel_attributes><additional_attributes>10;10;10;310</additional_attributes></element><element><id>Relation</id><coordinates><x>2093</x><y>624</y><w>143</w><h>39</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;-</panel_attributes><additional_attributes>10;10;90;10</additional_attributes></element><element><id>Relation</id><coordinates><x>1768</x><y>416</y><w>182</w><h>156</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;-</panel_attributes><additional_attributes>10;10;120;10;120;100</additional_attributes></element><element><id>UMLClass</id><coordinates><x>1365</x><y>871</y><w>390</w><h>221</h></coordinates><panel_attributes>/CommonMethods/
 --
 _getLineOfText()_
 _getSingleCharacter()_
@@ -154,4 +149,10 @@ Date()
 --
 
 --
-</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>611</x><y>637</y><w>286</w><h>39</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;-</panel_attributes><additional_attributes>200;10;10;10</additional_attributes></element><element><id>Relation</id><coordinates><x>208</x><y>624</y><w>208</w><h>39</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>140;10;10;10</additional_attributes></element><element><id>Relation</id><coordinates><x>208</x><y>819</y><w>208</w><h>39</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>140;10;10;10</additional_attributes></element></diagram>
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>611</x><y>637</y><w>286</w><h>39</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;-</panel_attributes><additional_attributes>200;10;10;10</additional_attributes></element><element><id>Relation</id><coordinates><x>208</x><y>624</y><w>208</w><h>39</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>140;10;10;10</additional_attributes></element><element><id>Relation</id><coordinates><x>208</x><y>819</y><w>208</w><h>39</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>140;10;10;10</additional_attributes></element><element><id>UMLClass</id><coordinates><x>897</x><y>1469</y><w>312</w><h>156</h></coordinates><panel_attributes>XMLfile
+--
+XML_FILENAME: String
+xmlDocument: CMarkup
+--
+XMLfile()
++ saveXMLdocumentToFile(): bool</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>949</x><y>1352</y><w>39</w><h>143</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>10;10;10;90</additional_attributes></element><element><id>Relation</id><coordinates><x>1170</x><y>1352</y><w>39</w><h>143</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>10;10;10;90</additional_attributes></element></diagram>

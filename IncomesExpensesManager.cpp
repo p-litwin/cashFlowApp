@@ -55,8 +55,9 @@ void IncomesExpensesManager::addNewIncome() {
         newIncome.setAmount(amount);
         newIncome.setId(++lastIncomeId);
         incomes.push_back(newIncome);
-        IncomesXMLFile incomesXMLfile("incomes.xml");
-        incomesXMLfile.saveIncomesToXMLfile(newIncome);
+        IncomesXMLfile incomesXMLfile("incomes.xml");
+        incomesXMLfile.addNewIncomeToXMLdocument(newIncome);
+        incomesXMLfile.saveXMLdocumentToFile();
         cout << "Nowy przychod zostal dodany." << endl;
         system("pause");
     }

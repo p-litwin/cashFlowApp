@@ -1,9 +1,7 @@
 #include "IncomesXMLfile.h"
 
 
-void IncomesXMLFile::saveIncomesToXMLfile(Income newIncome) {
-    CMarkup xmlDocument;
-    xmlDocument.Load(INCOMES_XML_FILE_NAME);
+void IncomesXMLfile::addNewIncomeToXMLdocument(Income newIncome) {
     if (xmlDocument.FindElem("incomes") == false) {
         xmlDocument.SetDoc("<?xml version='1.0'?>\n");
         xmlDocument.AddElem("incomes");
@@ -17,5 +15,4 @@ void IncomesXMLFile::saveIncomesToXMLfile(Income newIncome) {
     xmlDocument.IntoElem();
     xmlDocument.AddElem("item", newIncome.getItem());
     xmlDocument.AddElem("amount", amount);
-    xmlDocument.Save(INCOMES_XML_FILE_NAME);
 }

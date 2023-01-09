@@ -5,6 +5,7 @@
 #include "UsersManager.h"
 #include "IncomesExpensesManager.h"
 #include "Date.h"
+#include "XMLfile.h"
 
 using namespace std;
 
