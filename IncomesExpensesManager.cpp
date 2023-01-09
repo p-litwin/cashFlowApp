@@ -24,9 +24,8 @@ void IncomesExpensesManager::addNewExpense() {
         newExpense.setAmount(amount);
         newExpense.setId(++lastExpenseId);
         expenses.push_back(newExpense);
-        ExpensesXMLfile expensesXMLfile("expenses.xml");
-        expensesXMLfile.addNewExpenseToXMLdocument(newExpense);
-        expensesXMLfile.saveXMLdocumentToFile();
+        expensesXMLfile -> addNewExpenseToXMLdocument(newExpense);
+        expensesXMLfile -> saveXMLdocumentToFile();
         cout << "Nowy wydatek zostal dodany." << endl;
         system("pause");
     }
@@ -56,9 +55,8 @@ void IncomesExpensesManager::addNewIncome() {
         newIncome.setAmount(amount);
         newIncome.setId(++lastIncomeId);
         incomes.push_back(newIncome);
-        IncomesXMLfile incomesXMLfile("incomes.xml");
-        incomesXMLfile.addNewIncomeToXMLdocument(newIncome);
-        incomesXMLfile.saveXMLdocumentToFile();
+        incomesXMLfile -> addNewIncomeToXMLdocument(newIncome);
+        incomesXMLfile -> saveXMLdocumentToFile();
         cout << "Nowy przychod zostal dodany." << endl;
         system("pause");
     }
