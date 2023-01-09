@@ -1,9 +1,7 @@
 #include "ExpensesXMLfile.h"
 
 
-void ExpensesXMLFile::saveExpensesToXMLfile(Expense newExpense) {
-    CMarkup xmlDocument;
-    xmlDocument.Load(EXPESNES_XML_FILE_NAME);
+void ExpensesXMLfile::addNewExpenseToXMLdocument(Expense newExpense) {
     if (xmlDocument.FindElem("expenses") == false) {
         xmlDocument.SetDoc("<?xml version='1.0'?>\n");
         xmlDocument.AddElem("expenses");
@@ -17,5 +15,4 @@ void ExpensesXMLFile::saveExpensesToXMLfile(Expense newExpense) {
     xmlDocument.IntoElem();
     xmlDocument.AddElem("item", newExpense.getItem());
     xmlDocument.AddElem("amount", amount);
-    xmlDocument.Save(EXPESNES_XML_FILE_NAME);
 }

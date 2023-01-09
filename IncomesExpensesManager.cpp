@@ -24,8 +24,9 @@ void IncomesExpensesManager::addNewExpense() {
         newExpense.setAmount(amount);
         newExpense.setId(++lastExpenseId);
         expenses.push_back(newExpense);
-        ExpensesXMLFile expensesXMLfile("expenses.xml");
-        expensesXMLfile.saveExpensesToXMLfile(newExpense);
+        ExpensesXMLfile expensesXMLfile("expenses.xml");
+        expensesXMLfile.addNewExpenseToXMLdocument(newExpense);
+        expensesXMLfile.saveXMLdocumentToFile();
         cout << "Nowy wydatek zostal dodany." << endl;
         system("pause");
     }
