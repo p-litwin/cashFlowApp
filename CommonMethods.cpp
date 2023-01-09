@@ -26,7 +26,7 @@ char CommonMethods::getSingleCharacter() {
 
 string CommonMethods::convertIntToStringWithLeadingZero(int number) {
     string numberAsText;
-    if (number < 9) {
+    if (number < 10) {
         numberAsText = "0" + to_string(number);
     } else {
         numberAsText = to_string(number);
