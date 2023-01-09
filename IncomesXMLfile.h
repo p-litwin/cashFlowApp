@@ -5,18 +5,17 @@
 #include "Markup.h"
 #include "Income.h"
 #include "CommonMethods.h"
+#include "XMLfile.h"
 
 using namespace std;
 
-class IncomesXMLFile {
-    const string INCOMES_XML_FILE_NAME;
+class IncomesXMLfile:public XMLfile {
 
 public:
-    IncomesXMLFile(string fileName)
-        : INCOMES_XML_FILE_NAME(fileName) {
+    IncomesXMLfile(string fileName)
+    :XMLfile(fileName) {
     };
-
-    void saveIncomesToXMLfile(Income newIncome);
+    void addNewIncomeToXMLdocument(Income newIncome);
 };
 
 
