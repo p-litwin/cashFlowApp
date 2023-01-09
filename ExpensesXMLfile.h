@@ -5,18 +5,17 @@
 #include "Markup.h"
 #include "Expense.h"
 #include "CommonMethods.h"
+#include "XMLfile.h"
 
 using namespace std;
 
-class ExpensesXMLFile {
-    const string EXPESNES_XML_FILE_NAME;
+class ExpensesXMLfile:public XMLfile {
 
 public:
-    ExpensesXMLFile(string fileName)
-        : EXPESNES_XML_FILE_NAME(fileName) {
+    ExpensesXMLfile(string fileName)
+    :XMLfile(fileName) {
     };
-
-    void saveExpensesToXMLfile(Expense newExpense);
+    void addNewExpenseToXMLdocument(Expense newExpense);
 };
 
 

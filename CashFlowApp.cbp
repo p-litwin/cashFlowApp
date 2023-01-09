@@ -58,6 +58,8 @@
 		<Unit filename="UsersManager.h" />
 		<Unit filename="UsersXMLfile.cpp" />
 		<Unit filename="UsersXMLfile.h" />
+		<Unit filename="XMLfile.cpp" />
+		<Unit filename="XMLfile.h" />
 		<Unit filename="expenses.xml" />
 		<Unit filename="incomes.xml" />
 		<Unit filename="main.cpp" />
