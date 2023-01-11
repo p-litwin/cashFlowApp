@@ -2,6 +2,7 @@
 
 
 void ExpensesXMLfile::addNewExpenseToXMLdocument(Expense newExpense) {
+    xmlDocument.ResetPos();
     if (xmlDocument.FindElem("expenses") == false) {
         xmlDocument.SetDoc("<?xml version='1.0'?>\n");
         xmlDocument.AddElem("expenses");

@@ -2,6 +2,7 @@
 
 
 void IncomesXMLfile::addNewIncomeToXMLdocument(Income newIncome) {
+    xmlDocument.ResetPos();
     if (xmlDocument.FindElem("incomes") == false) {
         xmlDocument.SetDoc("<?xml version='1.0'?>\n");
         xmlDocument.AddElem("incomes");

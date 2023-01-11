@@ -24,6 +24,9 @@ class IncomesExpensesManager {
     IncomesXMLfile *incomesXMLfile;
     ExpensesXMLfile *expensesXMLfile;
 
+    Income readSingleIncomeFromXML(CMarkup *xmlDocument);
+    Expense readSingleExpenseFromXML(CMarkup *xmlDocument);
+
 public:
     IncomesExpensesManager(int loggedUserId)
     : LOGGED_USER_ID(loggedUserId) {
@@ -31,6 +34,8 @@ public:
         lastExpenseId = 0;
         incomesXMLfile = new IncomesXMLfile("incomes.xml");
         expensesXMLfile = new ExpensesXMLfile("expenses.xml");
+        loadIncomesForLoggedUser(incomesXMLfile -> getXMLdocument());
+        loadExpensesForLoggedUser(expensesXMLfile -> getXMLdocument());
     };
     ~IncomesExpensesManager() {
         delete incomesXMLfile;
@@ -40,6 +45,8 @@ public:
     }
     void addNewExpense();
     void addNewIncome();
+    void loadIncomesForLoggedUser(CMarkup *xmlDocument);
+    void loadExpensesForLoggedUser(CMarkup *xmlDocument);
     void displayExpense(int index);
     void displayIncome(int index);
 

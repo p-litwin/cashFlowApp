@@ -17,6 +17,7 @@ public:
     };
 
     bool saveXMLdocumentToFile();
+    CMarkup *getXMLdocument();
 };
 
 
