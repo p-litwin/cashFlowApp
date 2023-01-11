@@ -60,6 +60,7 @@ void IncomesExpensesManager::addNewIncome() {
     }
 }
 
+<<<<<<< HEAD
 void IncomesExpensesManager::displayExpense(int index) {
     cout << expenses[index].getId() << endl;
     cout << expenses[index].getDate() << endl;
@@ -128,4 +129,16 @@ Expense IncomesExpensesManager::readSingleExpenseFromXML(CMarkup *xmlDocument) {
     expense.setAmount(stof(xmlDocument -> GetData()));
     xmlDocument ->  OutOfElem();
     return expense;
+
+
+void IncomesExpensesManager::displayCurrentMonthBalance() {
+
+    balance = new Balance(date.getcurrentMonthStartDate(), date.getCurrentMonthEndDate());
+    balance -> loadIncomesForSelectedPeriod(incomesXMLfile -> getXMLdocument());
+    balance -> displayIncome(1);
+    balance -> loadExpensesForSelectedPeriod(expensesXMLfile -> getXMLdocument());
+    balance -> displayExpense(1);
+    delete balance;
+    balance = NULL;
+
 }

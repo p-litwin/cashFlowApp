@@ -18,7 +18,7 @@ public:
 
     bool saveXMLdocumentToFile();
     CMarkup *getXMLdocument();
-};
+
 
 
 #endif // XMLFILE_H

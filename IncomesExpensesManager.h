@@ -15,6 +15,8 @@ using namespace std;
 class IncomesExpensesManager {
     const int LOGGED_USER_ID;
     Date date;
+    vector<Income> incomes;
+    vector<Expense> expenses;
     int lastIncomeId;
     int lastExpenseId;
     IncomesXMLfile *incomesXMLfile;
@@ -48,6 +50,7 @@ public:
     void loadExpensesForLoggedUser(CMarkup *xmlDocument);
     void displayExpense(int index);
     void displayIncome(int index);
+    void displayCurrentMonthBalance();
 
 };
 
