@@ -75,3 +75,59 @@ void IncomesExpensesManager::displayIncome(int index) {
     cout << incomes[index].getItem() << endl;
     cout << incomes[index].getAmount() << endl;
 }
+
+void IncomesExpensesManager::loadIncomesForLoggedUser(CMarkup *xmlDocument) {
+    Income singleIncome;
+    xmlDocument -> FindElem("incomes");
+    xmlDocument -> IntoElem();
+    while (xmlDocument -> FindElem("income")) {
+        if (stoi(xmlDocument -> GetAttrib("userId")) == LOGGED_USER_ID) {
+            lastIncomeId = stoi(xmlDocument -> GetAttrib("incomeId"));
+            singleIncome = readSingleIncomeFromXML(xmlDocument);
+            incomes.push_back(singleIncome);
+        }
+    }
+}
+
+Income IncomesExpensesManager::readSingleIncomeFromXML(CMarkup *xmlDocument) {
+    Income income;
+    income.setId(stoi(xmlDocument -> GetAttrib("incomeId")));
+    income.setDate(xmlDocument -> GetAttrib("date"));
+    xmlDocument ->FindChildElem("item");
+    xmlDocument -> IntoElem();
+    income.setItem(xmlDocument -> GetData());
+    xmlDocument -> OutOfElem();
+    xmlDocument -> FindChildElem("amount");
+    xmlDocument ->  IntoElem();
+    income.setAmount(stof(xmlDocument -> GetData()));
+    xmlDocument ->  OutOfElem();
+    return income;
+}
+
+void IncomesExpensesManager::loadExpensesForLoggedUser(CMarkup *xmlDocument) {
+    Expense singleExpense;
+    xmlDocument -> FindElem("expenses");
+    xmlDocument -> IntoElem();
+    while (xmlDocument -> FindElem("expense")) {
+        if (stoi(xmlDocument -> GetAttrib("userId")) == LOGGED_USER_ID) {
+            lastExpenseId = stoi(xmlDocument -> GetAttrib("expenseId"));
+            singleExpense = readSingleExpenseFromXML(xmlDocument);
+            expenses.push_back(singleExpense);
+        }
+    }
+}
+
+Expense IncomesExpensesManager::readSingleExpenseFromXML(CMarkup *xmlDocument) {
+    Expense expense;
+    expense.setId(stoi(xmlDocument -> GetAttrib("expenseId")));
+    expense.setDate(xmlDocument -> GetAttrib("date"));
+    xmlDocument ->FindChildElem("item");
+    xmlDocument -> IntoElem();
+    expense.setItem(xmlDocument -> GetData());
+    xmlDocument -> OutOfElem();
+    xmlDocument -> FindChildElem("amount");
+    xmlDocument ->  IntoElem();
+    expense.setAmount(stof(xmlDocument -> GetData()));
+    xmlDocument ->  OutOfElem();
+    return expense;
+}
