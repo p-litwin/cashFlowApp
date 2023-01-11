@@ -121,3 +121,12 @@ int Date::getCurrentMonth() {
 int Date::getCurrentYear() {
     return currentYear;
 }
+
+string Date::getcurrentMonthStartDate(){
+    string startDateOfCurrentMonth = to_string(currentYear) + "-" + CommonMethods::convertIntToStringWithLeadingZero(currentMonth) + "-01";
+    return startDateOfCurrentMonth;
+}
+string Date::getCurrentMonthEndDate() {
+    string endDateOfCurrentMonth = to_string(currentYear) + "-" + CommonMethods::convertIntToStringWithLeadingZero(currentMonth) + "-" + to_string(currentMonthLength);
+    return endDateOfCurrentMonth;
+}

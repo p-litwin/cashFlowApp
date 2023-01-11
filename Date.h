@@ -11,6 +11,8 @@ using namespace std;
 
 class Date {
     string currentDate;
+    string startDateOfCurrentMonth;
+    string endDateOfCurrentMonth;
     int currentDay;
     int currentMonth;
     int currentYear;
@@ -39,6 +41,8 @@ public:
     int getCurrentMonth();
     int getCurrentYear();
     string getDateFromUser();
+    string getcurrentMonthStartDate();
+    string getCurrentMonthEndDate();
 };
 
 
