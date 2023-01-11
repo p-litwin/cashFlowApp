@@ -23,6 +23,7 @@ void IncomesExpensesManager::addNewExpense() {
         newExpense.setItem(item);
         newExpense.setAmount(amount);
         newExpense.setId(++lastExpenseId);
+        expenses.push_back(newExpense);
         expensesXMLfile -> addNewExpenseToXMLdocument(newExpense);
         expensesXMLfile -> saveXMLdocumentToFile();
         cout << "Nowy wydatek zostal dodany." << endl;
@@ -53,6 +54,7 @@ void IncomesExpensesManager::addNewIncome() {
         newIncome.setItem(item);
         newIncome.setAmount(amount);
         newIncome.setId(++lastIncomeId);
+        incomes.push_back(newIncome);
         incomesXMLfile -> addNewIncomeToXMLdocument(newIncome);
         incomesXMLfile -> saveXMLdocumentToFile();
         cout << "Nowy przychod zostal dodany." << endl;
@@ -60,7 +62,6 @@ void IncomesExpensesManager::addNewIncome() {
     }
 }
 
-<<<<<<< HEAD
 void IncomesExpensesManager::displayExpense(int index) {
     cout << expenses[index].getId() << endl;
     cout << expenses[index].getDate() << endl;
@@ -130,15 +131,29 @@ Expense IncomesExpensesManager::readSingleExpenseFromXML(CMarkup *xmlDocument) {
     xmlDocument ->  OutOfElem();
     return expense;
 
+}
 
 void IncomesExpensesManager::displayCurrentMonthBalance() {
 
     balance = new Balance(date.getcurrentMonthStartDate(), date.getCurrentMonthEndDate());
-    balance -> loadIncomesForSelectedPeriod(incomesXMLfile -> getXMLdocument());
-    balance -> displayIncome(1);
-    balance -> loadExpensesForSelectedPeriod(expensesXMLfile -> getXMLdocument());
-    balance -> displayExpense(1);
+    balance -> loadIncomesForSelectedPeriod(getIncomesOfUser());
+    balance -> sortIncomesByDate();
+    cout << "=====PRZYCHODY=====" << endl;
+    balance -> displayIncomes();
+    balance -> loadExpensesForSelectedPeriod(getExpensesOfUser());
+    balance -> sortExpensesByDate();
+    cout << "======WYDATKI======" << endl;
+    balance -> displayExpenses();
     delete balance;
     balance = NULL;
+    system("pause");
 
+}
+
+vector<Income> IncomesExpensesManager::getIncomesOfUser() {
+    return incomes;
+}
+
+vector<Expense> IncomesExpensesManager::getExpensesOfUser() {
+    return expenses;
 }

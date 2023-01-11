@@ -6,6 +6,8 @@
 #include "Markup.h"
 #include <vector>
 
+using namespace std;
+
 class XMLfile {
 protected:
     const string XML_FILENAME;
@@ -19,6 +21,6 @@ public:
     bool saveXMLdocumentToFile();
     CMarkup *getXMLdocument();
 
-
+};
 
 #endif // XMLFILE_H

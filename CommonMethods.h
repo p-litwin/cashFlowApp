@@ -20,6 +20,7 @@ public:
     static bool isInputValidFloatWithDot(string input);
     static float convertStringToFloat(string input);
     static string convertFloatToString(float number);
+
 };
 
 

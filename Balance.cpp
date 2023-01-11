@@ -1,76 +1,50 @@
 #include "Balance.h"
 
-void Balance::loadIncomesForSelectedPeriod(CMarkup xmlDocument){
-    Income singleIncome;
-    CMarkup *xmlPTR = &xmlDocument;
-    xmlDocument.FindElem("incomes");
-    xmlDocument.IntoElem();
-
-    while (xmlDocument.FindElem("income")) {
-        if (stoi(xmlDocument.GetAttrib("userId")) == 2 && ( xmlDocument.GetAttrib("date") >= START_DATE && xmlDocument.GetAttrib("date") <= END_DATE)) {
-            singleIncome = readSingleIncomeFromXML(xmlPTR);
-            incomes.push_back(singleIncome);
-        }
-    }
-}
-void Balance::loadExpensesForSelectedPeriod(CMarkup xmlDocument){
-    Expense singleExpense;
-    CMarkup *xmlPTR = &xmlDocument;
-    xmlDocument.FindElem("expenses");
-    xmlDocument.IntoElem();
-
-    while (xmlDocument.FindElem("expense")) {
-        if (stoi(xmlDocument.GetAttrib("userId")) == 2 && ( xmlDocument.GetAttrib("date") >= START_DATE && xmlDocument.GetAttrib("date") <= END_DATE)) {
-            singleExpense = readSingleExpenseFromXML(xmlPTR);
-            expenses.push_back(singleExpense);
+void Balance::loadIncomesForSelectedPeriod(vector<Income> userIncomes) {
+    for (size_t i = 0; i < userIncomes.size(); i++) {
+        if (userIncomes[i].getDate() >= START_DATE && userIncomes[i].getDate() <= END_DATE) {
+            incomes.push_back(userIncomes[i]);
         }
     }
 }
 
-Income Balance::readSingleIncomeFromXML(CMarkup *xmlDocument) {
-    Income income;
-    income.setId(stoi(xmlDocument -> GetAttrib("incomeId")));
-    income.setDate(xmlDocument -> GetAttrib("date"));
-    xmlDocument -> FindChildElem("item");
-    xmlDocument -> IntoElem();
-    income.setItem(xmlDocument -> GetData());
-    xmlDocument -> OutOfElem();
-    xmlDocument -> FindChildElem("amount");
-    xmlDocument -> IntoElem();
-    income.setAmount(stof(xmlDocument -> GetData()));
-    xmlDocument -> OutOfElem();
-    return income;
+void Balance::loadExpensesForSelectedPeriod(vector<Expense> userExpenses) {
+    for (size_t i = 0; i < userExpenses.size(); i++) {
+        if (userExpenses[i].getDate() >= START_DATE && userExpenses[i].getDate() <= END_DATE) {
+            expenses.push_back(userExpenses[i]);
+        }
+    }
 }
 
-Expense Balance::readSingleExpenseFromXML(CMarkup *xmlDocument) {
-    Expense expense;
-    expense.setId(stoi(xmlDocument -> GetAttrib("expenseId")));
-    expense.setDate(xmlDocument -> GetAttrib("date"));
-    xmlDocument -> FindChildElem("item");
-    xmlDocument -> IntoElem();
-    expense.setItem(xmlDocument -> GetData());
-    xmlDocument -> OutOfElem();
-    xmlDocument -> FindChildElem("amount");
-    xmlDocument -> IntoElem();
-    expense.setAmount(stof(xmlDocument -> GetData()));
-    xmlDocument -> OutOfElem();
-    return expense;
+void Balance::displayExpenses() {
+    for (size_t i = 0; i < expenses.size(); i++) {
+        cout << expenses[i].getId() << endl;
+        cout << expenses[i].getDate() << endl;
+        cout << expenses[i].getItem() << endl;
+        cout << expenses[i].getAmount() << endl;
+    }
 }
 
-void Balance::displayExpense(int index) {
-cout << expenses.size() << endl;
-system("pause");
-//    cout << expenses[index].getId() << endl;
-//    cout << expenses[index].getDate() << endl;
-//    cout << expenses[index].getItem() << endl;
-//    cout << expenses[index].getAmount() << endl;
+void Balance::displayIncomes() {
+    for (size_t i = 0; i < incomes.size(); i++) {
+        cout << incomes[i].getId() << endl;
+        cout << incomes[i].getDate() << endl;
+        cout << incomes[i].getItem() << endl;
+        cout << incomes[i].getAmount() << endl;
+    }
 }
 
-void Balance::displayIncome(int index) {
-cout << incomes.size() << endl;
-system("pause");
-//    cout << incomes[index].getId() << endl;
-//    cout << incomes[index].getDate() << endl;
-//    cout << incomes[index].getItem() << endl;
-//    cout << incomes[index].getAmount() << endl;
+bool Balance::dateCompareIncome (Income income1, Income income2) {
+    return (income1.getDate() < income2.getDate()) ;
+}
+
+bool Balance::dateCompareExpense (Expense expense1, Expense expense2) {
+    return (expense1.getDate() < expense2.getDate()) ;
+}
+
+void Balance::sortExpensesByDate(){
+    sort(expenses.begin(), expenses.end(),dateCompareExpense);
+}
+void Balance::sortIncomesByDate(){
+    sort(incomes.begin(), incomes.end(),dateCompareIncome);
 }

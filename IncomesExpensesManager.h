@@ -51,6 +51,8 @@ public:
     void displayExpense(int index);
     void displayIncome(int index);
     void displayCurrentMonthBalance();
+    vector<Income> getIncomesOfUser();
+    vector<Expense> getExpensesOfUser();
 
 };
 
