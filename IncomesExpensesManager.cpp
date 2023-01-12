@@ -138,10 +138,12 @@ void IncomesExpensesManager::displayCurrentMonthBalance() {
     balance = new Balance(date.getcurrentMonthStartDate(), date.getCurrentMonthEndDate());
     balance -> loadIncomesForSelectedPeriod(getIncomesOfUser());
     balance -> sortIncomesByDate();
+    cout << "Bilans z biezacego miesiaca" << endl;
     balance -> displayIncomes();
     balance -> loadExpensesForSelectedPeriod(getExpensesOfUser());
     balance -> sortExpensesByDate();
     balance -> displayExpenses();
+    balance -> displayCashflow();
     delete balance;
     balance = NULL;
     system("pause");

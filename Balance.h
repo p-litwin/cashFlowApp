@@ -18,11 +18,18 @@ class Balance {
     float cashflow;
     static bool dateCompareIncome (Income income1, Income income2);
     static bool dateCompareExpense (Expense expense1, Expense expense2);
+    void addToTotalExpenses(float amount);
+    void addToTotalIncomes(float amount);
+    void calculateCashflow();
+
 
 
 public:
     Balance(string startDate, string endDate)
     :START_DATE(startDate), END_DATE(endDate){
+    totalExpenses = 0.0;
+    totalIncomes = 0.0;
+    cashflow = 0.0;
     };
     void loadIncomesForSelectedPeriod(vector<Income> userIncomes);
     void loadExpensesForSelectedPeriod(vector<Expense> userExpenses);
@@ -30,6 +37,7 @@ public:
     void displayIncomes();
     void sortExpensesByDate();
     void sortIncomesByDate();
+    void displayCashflow();
 };
 
 #endif // BALANCE_H
