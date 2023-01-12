@@ -68,6 +68,7 @@ void CashFlowApp::showMainMenu() {
             incomesExpensesManager -> displayCurrentMonthBalance();
             break;
         case '4':
+            incomesExpensesManager -> displayPreviousMonthBalance();
             break;
         case '5':
 

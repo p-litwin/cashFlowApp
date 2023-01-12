@@ -51,6 +51,8 @@ public:
     void displayExpense(int index);
     void displayIncome(int index);
     void displayCurrentMonthBalance();
+    void displayPreviousMonthBalance();
+    void displayCustomPeriodBalance();
     vector<Income> getIncomesOfUser();
     vector<Expense> getExpensesOfUser();
 

@@ -13,10 +13,13 @@ class Date {
     string currentDate;
     string startDateOfCurrentMonth;
     string endDateOfCurrentMonth;
+    string startDateOfLastMonth;
+    string endDateOfLastMonth;
     int currentDay;
     int currentMonth;
     int currentYear;
     int currentMonthLength;
+    int lastMonthLenght;
 
     int determineCurrentDay();
     int determineCurrentMonth();
@@ -43,6 +46,8 @@ public:
     string getDateFromUser();
     string getcurrentMonthStartDate();
     string getCurrentMonthEndDate();
+    string getPreviousMonthStartDate();
+    string getPreviousMonthEndDate();
 };
 
 

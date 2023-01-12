@@ -150,6 +150,21 @@ void IncomesExpensesManager::displayCurrentMonthBalance() {
 
 }
 
+void IncomesExpensesManager::displayPreviousMonthBalance() {
+    balance = new Balance(date.getPreviousMonthStartDate(), date.getPreviousMonthEndDate());
+    balance -> loadIncomesForSelectedPeriod(getIncomesOfUser());
+    balance -> sortIncomesByDate();
+    cout << "Bilans z biezacego miesiaca" << endl;
+    balance -> displayIncomes();
+    balance -> loadExpensesForSelectedPeriod(getExpensesOfUser());
+    balance -> sortExpensesByDate();
+    balance -> displayExpenses();
+    balance -> displayCashflow();
+    delete balance;
+    balance = NULL;
+    system("pause");
+}
+
 vector<Income> IncomesExpensesManager::getIncomesOfUser() {
     return incomes;
 }
