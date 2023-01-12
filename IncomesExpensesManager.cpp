@@ -134,11 +134,11 @@ Expense IncomesExpensesManager::readSingleExpenseFromXML(CMarkup *xmlDocument) {
 }
 
 void IncomesExpensesManager::displayCurrentMonthBalance() {
-
+    system("cls");
     balance = new Balance(date.getcurrentMonthStartDate(), date.getCurrentMonthEndDate());
     balance -> loadIncomesForSelectedPeriod(getIncomesOfUser());
     balance -> sortIncomesByDate();
-    cout << "Bilans z biezacego miesiaca" << endl;
+    cout << "Bilans za okres " << date.getcurrentMonthStartDate() << " - " << date.getCurrentMonthEndDate() << endl;
     balance -> displayIncomes();
     balance -> loadExpensesForSelectedPeriod(getExpensesOfUser());
     balance -> sortExpensesByDate();
@@ -151,10 +151,11 @@ void IncomesExpensesManager::displayCurrentMonthBalance() {
 }
 
 void IncomesExpensesManager::displayPreviousMonthBalance() {
+    system("cls");
     balance = new Balance(date.getPreviousMonthStartDate(), date.getPreviousMonthEndDate());
     balance -> loadIncomesForSelectedPeriod(getIncomesOfUser());
     balance -> sortIncomesByDate();
-    cout << "Bilans z biezacego miesiaca" << endl;
+    cout << "Bilans za okres " << date.getPreviousMonthStartDate() << " - " << date.getPreviousMonthEndDate() << endl;
     balance -> displayIncomes();
     balance -> loadExpensesForSelectedPeriod(getExpensesOfUser());
     balance -> sortExpensesByDate();
