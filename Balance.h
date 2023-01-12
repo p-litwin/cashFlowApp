@@ -6,6 +6,7 @@
 #include "Expense.h"
 #include "Markup.h"
 #include <algorithm>
+#include <iomanip>
 
 class Balance {
     vector<Income> incomes;
