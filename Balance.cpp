@@ -24,7 +24,7 @@ void Balance::displayExpenses() {
     cout << "=============================================================" << endl;
     cout << "=========================Wydatki=============================" << endl;
     cout << "=============================================================" << endl;
-    cout << setw(16) << left << "Data" << setw(36) << left << "Kategoria wydatku" << setw(8) << left << "Kwota" << endl;
+    cout << setw(16) << left << "Data" << setw(36) << left << "Kategoria wydatku" << setw(8) << right << "Kwota" << endl;
     cout << setprecision(2) << fixed;
     for (size_t i = 0; i < expenses.size(); i++) {
         cout << setw(16) << left << expenses[i].getDate() << setw(36) << left << expenses[i].getItem() << setw(8) << right << expenses[i].getAmount() << endl;
@@ -37,7 +37,7 @@ void Balance::displayIncomes() {
     cout << "=============================================================" << endl;
     cout << "=========================Przychody===========================" << endl;
     cout << "=============================================================" << endl;
-    cout << setw(16) << left << "Data" << setw(36) << left << "Kategoria przychodu" << setw(8) << left << "Kwota" << endl;
+    cout << setw(16) << left << "Data" << setw(36) << left << "Kategoria przychodu" << setw(8) << right << "Kwota" << endl;
     cout << setprecision(2) << fixed;
     for (size_t i = 0; i < incomes.size(); i++) {
         cout << setw(16) << left << incomes[i].getDate() << setw(36) << left << incomes[i].getItem() << setw(8) << right << incomes[i].getAmount() << endl;

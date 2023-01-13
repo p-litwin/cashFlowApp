@@ -138,7 +138,9 @@ void IncomesExpensesManager::displayCurrentMonthBalance() {
     balance = new Balance(date.getcurrentMonthStartDate(), date.getCurrentMonthEndDate());
     balance -> loadIncomesForSelectedPeriod(getIncomesOfUser());
     balance -> sortIncomesByDate();
-    cout << "Bilans za okres " << date.getcurrentMonthStartDate() << " - " << date.getCurrentMonthEndDate() << endl;
+    cout << "=============================================================" << endl;
+    cout << "==========" << "Bilans za okres " << date.getcurrentMonthStartDate() << " - " << date.getCurrentMonthEndDate() << "===========" << endl;
+    cout << "=============================================================" << endl << endl;
     balance -> displayIncomes();
     balance -> loadExpensesForSelectedPeriod(getExpensesOfUser());
     balance -> sortExpensesByDate();
