@@ -65,13 +65,13 @@ void CashFlowApp::showMainMenu() {
             incomesExpensesManager -> addNewExpense();
             break;
         case '3':
-
+            incomesExpensesManager -> displayCurrentMonthBalance();
             break;
         case '4':
-
+            incomesExpensesManager -> displayPreviousMonthBalance();
             break;
         case '5':
-
+            incomesExpensesManager -> displayCustomPeriodBalance();
             break;
         case '6':
             usersManager.changePassword();

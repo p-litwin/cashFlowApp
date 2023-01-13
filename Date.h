@@ -11,15 +11,20 @@ using namespace std;
 
 class Date {
     string currentDate;
+    string startDateOfCurrentMonth;
+    string endDateOfCurrentMonth;
+    string startDateOfLastMonth;
+    string endDateOfLastMonth;
     int currentDay;
     int currentMonth;
     int currentYear;
     int currentMonthLength;
+    int lastMonthLenght;
 
     int determineCurrentDay();
     int determineCurrentMonth();
     int determineCurrentYear();
-    int determineMonthLength(int month, int year);
+    int determineMonthLength(int year, int month);
     bool isSelectedDateValid(string date);
     bool isDateFormatCorrect(string date);
     bool isInputMonthCorrect(int year, int month);
@@ -31,7 +36,7 @@ public:
         currentDay = determineCurrentDay();
         currentMonth = determineCurrentMonth();
         currentYear = determineCurrentYear();
-        currentMonthLength = determineMonthLength(currentMonth, currentYear);
+        currentMonthLength = determineMonthLength(currentYear, currentMonth);
     };
     string determineCurrentDate();
     string getCurrentDate();
@@ -39,6 +44,10 @@ public:
     int getCurrentMonth();
     int getCurrentYear();
     string getDateFromUser();
+    string getcurrentMonthStartDate();
+    string getCurrentMonthEndDate();
+    string getPreviousMonthStartDate();
+    string getPreviousMonthEndDate();
 };
 
 

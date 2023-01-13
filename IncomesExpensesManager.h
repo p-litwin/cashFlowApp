@@ -8,21 +8,20 @@
 #include "Date.h"
 #include "ExpensesXMLfile.h"
 #include "IncomesXMLfile.h"
+#include "Balance.h"
 
 using namespace std;
 
 class IncomesExpensesManager {
     const int LOGGED_USER_ID;
+    Date date;
     vector<Income> incomes;
     vector<Expense> expenses;
-    Date date;
     int lastIncomeId;
     int lastExpenseId;
-    float totalIncomes;
-    float totalExpenses;
-    float balance;
     IncomesXMLfile *incomesXMLfile;
     ExpensesXMLfile *expensesXMLfile;
+    Balance *balance;
 
     Income readSingleIncomeFromXML(CMarkup *xmlDocument);
     Expense readSingleExpenseFromXML(CMarkup *xmlDocument);
@@ -40,8 +39,10 @@ public:
     ~IncomesExpensesManager() {
         delete incomesXMLfile;
         delete expensesXMLfile;
+        delete balance;
         incomesXMLfile = NULL;
         expensesXMLfile = NULL;
+        balance = NULL;
     }
     void addNewExpense();
     void addNewIncome();
@@ -49,6 +50,11 @@ public:
     void loadExpensesForLoggedUser(CMarkup *xmlDocument);
     void displayExpense(int index);
     void displayIncome(int index);
+    void displayCurrentMonthBalance();
+    void displayPreviousMonthBalance();
+    void displayCustomPeriodBalance();
+    vector<Income> getIncomesOfUser();
+    vector<Expense> getExpensesOfUser();
 
 };
 

@@ -2,6 +2,7 @@
 #define CASHFLOWAPP_H
 
 #include <iostream>
+#include <algorithm>
 #include "UsersManager.h"
 #include "IncomesExpensesManager.h"
 #include "Date.h"

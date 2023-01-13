@@ -32,6 +32,8 @@
 			<Add option="-Wall" />
 			<Add option="-fexceptions" />
 		</Compiler>
+		<Unit filename="Balance.cpp" />
+		<Unit filename="Balance.h" />
 		<Unit filename="CashFlowApp.cpp" />
 		<Unit filename="CashFlowApp.h" />
 		<Unit filename="CommonMethods.cpp" />

@@ -130,4 +130,75 @@ Expense IncomesExpensesManager::readSingleExpenseFromXML(CMarkup *xmlDocument) {
     expense.setAmount(stof(xmlDocument -> GetData()));
     xmlDocument ->  OutOfElem();
     return expense;
+
+}
+
+void IncomesExpensesManager::displayCurrentMonthBalance() {
+    system("cls");
+    balance = new Balance(date.getcurrentMonthStartDate(), date.getCurrentMonthEndDate());
+    balance -> loadIncomesForSelectedPeriod(getIncomesOfUser());
+    balance -> sortIncomesByDate();
+    cout << "=============================================================" << endl;
+    cout << "==========" << "Bilans za okres " << date.getcurrentMonthStartDate() << " - " << date.getCurrentMonthEndDate() << "===========" << endl;
+    cout << "=============================================================" << endl << endl;
+    balance -> displayIncomes();
+    balance -> loadExpensesForSelectedPeriod(getExpensesOfUser());
+    balance -> sortExpensesByDate();
+    balance -> displayExpenses();
+    balance -> displayCashflow();
+    delete balance;
+    balance = NULL;
+    system("pause");
+
+}
+
+void IncomesExpensesManager::displayPreviousMonthBalance() {
+    system("cls");
+    balance = new Balance(date.getPreviousMonthStartDate(), date.getPreviousMonthEndDate());
+    balance -> loadIncomesForSelectedPeriod(getIncomesOfUser());
+    balance -> sortIncomesByDate();
+    cout << "=============================================================" << endl;
+    cout << "==========" << "Bilans za okres " << date.getPreviousMonthStartDate() << " - " << date.getPreviousMonthEndDate() << "===========" << endl;
+    cout << "=============================================================" << endl << endl;
+    balance -> displayIncomes();
+    balance -> loadExpensesForSelectedPeriod(getExpensesOfUser());
+    balance -> sortExpensesByDate();
+    balance -> displayExpenses();
+    balance -> displayCashflow();
+    delete balance;
+    balance = NULL;
+    system("pause");
+}
+
+void IncomesExpensesManager::displayCustomPeriodBalance() {
+    system("cls");
+    cout << "Podaj date poczatkowa:" << endl;
+    string startDate = date.getDateFromUser();
+    cout << "Podaj date koncowa:" << endl;
+    string endDate = date.getDateFromUser();
+    if (startDate <= endDate) {
+        balance = new Balance(startDate, endDate);
+        balance -> loadIncomesForSelectedPeriod(getIncomesOfUser());
+        balance -> sortIncomesByDate();
+        cout << "Bilans za okres " << startDate << " - " << endDate << endl;
+        balance -> displayIncomes();
+        balance -> loadExpensesForSelectedPeriod(getExpensesOfUser());
+        balance -> sortExpensesByDate();
+        balance -> displayExpenses();
+        balance -> displayCashflow();
+        delete balance;
+        balance = NULL;
+        system("pause");
+    } else {
+        cout << "Data poczatkowa nie moze byc data pozniejsza niz data koncowa!";
+        system("pause");
+    }
+}
+
+vector<Income> IncomesExpensesManager::getIncomesOfUser() {
+    return incomes;
+}
+
+vector<Expense> IncomesExpensesManager::getExpensesOfUser() {
+    return expenses;
 }

@@ -92,7 +92,7 @@ bool Date::isInputMonthCorrect(int year, int month) {
     bool isMonthInCurrentYearCorrect = (year == getCurrentYear() && month >= 1 && month <= getCurrentMonth() );
     bool isMonthInEarlierYearCorrect = (year < getCurrentYear() && month >= 1);
 
-    if ( isMonthInCurrentYearCorrect || isMonthInEarlierYearCorrect ){
+    if ( isMonthInCurrentYearCorrect || isMonthInEarlierYearCorrect ) {
         return true;
     }
     return false;
@@ -120,4 +120,32 @@ int Date::getCurrentMonth() {
 }
 int Date::getCurrentYear() {
     return currentYear;
+}
+
+string Date::getcurrentMonthStartDate() {
+    string startDateOfCurrentMonth = to_string(currentYear) + "-" + CommonMethods::convertIntToStringWithLeadingZero(currentMonth) + "-01";
+    return startDateOfCurrentMonth;
+}
+string Date::getCurrentMonthEndDate() {
+    string endDateOfCurrentMonth = to_string(currentYear) + "-" + CommonMethods::convertIntToStringWithLeadingZero(currentMonth) + "-" + to_string(currentMonthLength);
+    return endDateOfCurrentMonth;
+}
+
+string Date::getPreviousMonthStartDate() {
+    string startDateOfPreviousMonth;
+    if (currentMonth == 1) {
+        startDateOfPreviousMonth = to_string(currentYear - 1) + "-" + CommonMethods::convertIntToStringWithLeadingZero(currentMonth + 11 ) + "-01";
+    } else {
+        startDateOfPreviousMonth = to_string(currentYear) + "-" + CommonMethods::convertIntToStringWithLeadingZero(currentMonth - 1) + "-01";
+    }
+    return startDateOfPreviousMonth;
+}
+string Date::getPreviousMonthEndDate() {
+    string endDateOfPreviousMonth;
+    if (currentMonth == 1) {
+        endDateOfPreviousMonth = to_string(currentYear - 1) + "-" + CommonMethods::convertIntToStringWithLeadingZero(currentMonth + 11 ) + "-31";
+    } else {
+        endDateOfPreviousMonth = to_string(currentYear) + "-" + CommonMethods::convertIntToStringWithLeadingZero(currentMonth - 1) + "-" + to_string(determineMonthLength(currentYear, currentMonth - 1));
+    }
+    return endDateOfPreviousMonth;
 }
