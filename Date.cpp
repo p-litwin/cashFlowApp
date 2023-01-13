@@ -23,6 +23,8 @@ int Date:: determineCurrentMonth() {
     time_t t = time(0);
     tm *const pTInfo = localtime(&t);
     int currentMonth = 1 + pTInfo->tm_mon;
+    cout << "Biezacy miesiac: " << currentMonth << endl;
+    system("pause");
     return currentMonth;
 }
 
