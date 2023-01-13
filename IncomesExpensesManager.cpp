@@ -157,7 +157,9 @@ void IncomesExpensesManager::displayPreviousMonthBalance() {
     balance = new Balance(date.getPreviousMonthStartDate(), date.getPreviousMonthEndDate());
     balance -> loadIncomesForSelectedPeriod(getIncomesOfUser());
     balance -> sortIncomesByDate();
-    cout << "Bilans za okres " << date.getPreviousMonthStartDate() << " - " << date.getPreviousMonthEndDate() << endl;
+    cout << "=============================================================" << endl;
+    cout << "==========" << "Bilans za okres " << date.getPreviousMonthStartDate() << " - " << date.getPreviousMonthEndDate() << "===========" << endl;
+    cout << "=============================================================" << endl << endl;
     balance -> displayIncomes();
     balance -> loadExpensesForSelectedPeriod(getExpensesOfUser());
     balance -> sortExpensesByDate();
@@ -166,6 +168,31 @@ void IncomesExpensesManager::displayPreviousMonthBalance() {
     delete balance;
     balance = NULL;
     system("pause");
+}
+
+void IncomesExpensesManager::displayCustomPeriodBalance() {
+    system("cls");
+    cout << "Podaj date poczatkowa:" << endl;
+    string startDate = date.getDateFromUser();
+    cout << "Podaj date koncowa:" << endl;
+    string endDate = date.getDateFromUser();
+    if (startDate <= endDate) {
+        balance = new Balance(startDate, endDate);
+        balance -> loadIncomesForSelectedPeriod(getIncomesOfUser());
+        balance -> sortIncomesByDate();
+        cout << "Bilans za okres " << startDate << " - " << endDate << endl;
+        balance -> displayIncomes();
+        balance -> loadExpensesForSelectedPeriod(getExpensesOfUser());
+        balance -> sortExpensesByDate();
+        balance -> displayExpenses();
+        balance -> displayCashflow();
+        delete balance;
+        balance = NULL;
+        system("pause");
+    } else {
+        cout << "Data poczatkowa nie moze byc data pozniejsza niz data koncowa!";
+        system("pause");
+    }
 }
 
 vector<Income> IncomesExpensesManager::getIncomesOfUser() {

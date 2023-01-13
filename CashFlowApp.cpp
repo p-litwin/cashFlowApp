@@ -71,7 +71,7 @@ void CashFlowApp::showMainMenu() {
             incomesExpensesManager -> displayPreviousMonthBalance();
             break;
         case '5':
-
+            incomesExpensesManager -> displayCustomPeriodBalance();
             break;
         case '6':
             usersManager.changePassword();

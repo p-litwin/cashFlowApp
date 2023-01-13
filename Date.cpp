@@ -23,8 +23,6 @@ int Date:: determineCurrentMonth() {
     time_t t = time(0);
     tm *const pTInfo = localtime(&t);
     int currentMonth = 1 + pTInfo->tm_mon;
-    cout << "Biezacy miesiac: " << currentMonth << endl;
-    system("pause");
     return currentMonth;
 }
 
@@ -147,7 +145,7 @@ string Date::getPreviousMonthEndDate() {
     if (currentMonth == 1) {
         endDateOfPreviousMonth = to_string(currentYear - 1) + "-" + CommonMethods::convertIntToStringWithLeadingZero(currentMonth + 11 ) + "-31";
     } else {
-        endDateOfPreviousMonth = to_string(currentYear) + "-" + CommonMethods::convertIntToStringWithLeadingZero(currentMonth - 1) + "-" + to_string(determineMonthLength(currentMonth - 1, currentYear));
+        endDateOfPreviousMonth = to_string(currentYear) + "-" + CommonMethods::convertIntToStringWithLeadingZero(currentMonth - 1) + "-" + to_string(determineMonthLength(currentYear, currentMonth - 1));
     }
     return endDateOfPreviousMonth;
 }
