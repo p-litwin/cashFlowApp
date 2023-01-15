@@ -25,6 +25,7 @@ class IncomesExpensesManager {
 
     Income readSingleIncomeFromXML(CMarkup *xmlDocument);
     Expense readSingleExpenseFromXML(CMarkup *xmlDocument);
+    void displayBalance(string startDate, string endDate);
 
 public:
     IncomesExpensesManager(int loggedUserId)
