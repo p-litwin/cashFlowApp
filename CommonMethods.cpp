@@ -52,19 +52,19 @@ float CommonMethods::getMandatoryFloatValue() {
     string input = "";
     float amount = 0.0;
     while(true) {
-        input = getMandatoryLineOfText("Podaj kwote");
+        input = getMandatoryLineOfText("Podaj kwote (max. 2 miejsca po przecinku)");
         if (isInputValidFloatWithComma(input) || isInputValidFloatWithDot(input)) {
             amount = convertStringToFloat(input);
             return amount;
         } else {
-            cout << "Podana wartosc nie jest liczba." << endl;
+            cout << "Podana wartosc jest nieprawidlowa. Liczba musi miec maksymalnie 2 miejsca po przecinknu." << endl;
         }
     }
     return amount;
 }
 
 bool CommonMethods::isInputValidFloatWithComma(string input) {
-    regex floatWithComma("([0-9]*[,])?[0-9]+");
+    regex floatWithComma("([0-9]*[,])?[0-9][0-9]");
     if (regex_match(input, floatWithComma)) {
         return true;
     }
@@ -72,7 +72,7 @@ bool CommonMethods::isInputValidFloatWithComma(string input) {
 }
 
 bool CommonMethods::isInputValidFloatWithDot(string input) {
-    regex floatWithDot("([0-9]*[.])?[0-9]+");
+    regex floatWithDot("([0-9]*[.])?[0-9][0-9]");
     if (regex_match(input, floatWithDot)) {
         return true;
     }
