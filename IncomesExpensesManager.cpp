@@ -6,6 +6,7 @@ void IncomesExpensesManager::addNewExpense() {
         char selection;
         string item;
         float amount;
+        Date date;
         cout << "Czy chcesz dodac wydatek z dzisiejsza data? T/N: ";
         selection = CommonMethods::getSingleCharacter();
         do {
@@ -37,6 +38,7 @@ void IncomesExpensesManager::addNewIncome() {
         char selection;
         string item;
         float amount;
+        Date date;
         cout << "Czy chcesz dodac przychod z dzisiejsza data? T/N: ";
         selection = CommonMethods::getSingleCharacter();
         do {
@@ -134,15 +136,18 @@ Expense IncomesExpensesManager::readSingleExpenseFromXML(CMarkup *xmlDocument) {
 }
 
 void IncomesExpensesManager::displayCurrentMonthBalance() {
+    Date date;
     displayBalance(date.getcurrentMonthStartDate(), date.getCurrentMonthEndDate());
 
 }
 
 void IncomesExpensesManager::displayPreviousMonthBalance() {
+    Date date;
     displayBalance(date.getPreviousMonthStartDate(), date.getPreviousMonthEndDate());
 }
 
 void IncomesExpensesManager::displayCustomPeriodBalance() {
+    Date date;
     cout << "Data poczatkowa. ";
     string startDate = date.getDateFromUser();
     cout << "Data koncowa. ";
