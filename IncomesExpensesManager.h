@@ -14,7 +14,6 @@ using namespace std;
 
 class IncomesExpensesManager {
     const int LOGGED_USER_ID;
-    //Date date;
     vector<Income> incomes;
     vector<Expense> expenses;
     int lastIncomeId;
@@ -40,7 +39,6 @@ public:
     ~IncomesExpensesManager() {
         delete incomesXMLfile;
         delete expensesXMLfile;
-        delete balance;
         incomesXMLfile = NULL;
         expensesXMLfile = NULL;
         balance = NULL;
