@@ -83,8 +83,8 @@ void IncomesExpensesManager::loadIncomesForLoggedUser(CMarkup *xmlDocument) {
     xmlDocument -> FindElem("incomes");
     xmlDocument -> IntoElem();
     while (xmlDocument -> FindElem("income")) {
+        lastIncomeId = stoi(xmlDocument -> GetAttrib("incomeId"));
         if (stoi(xmlDocument -> GetAttrib("userId")) == LOGGED_USER_ID) {
-            lastIncomeId = stoi(xmlDocument -> GetAttrib("incomeId"));
             singleIncome = readSingleIncomeFromXML(xmlDocument);
             incomes.push_back(singleIncome);
         }
@@ -111,8 +111,8 @@ void IncomesExpensesManager::loadExpensesForLoggedUser(CMarkup *xmlDocument) {
     xmlDocument -> FindElem("expenses");
     xmlDocument -> IntoElem();
     while (xmlDocument -> FindElem("expense")) {
+        lastExpenseId = stoi(xmlDocument -> GetAttrib("expenseId"));
         if (stoi(xmlDocument -> GetAttrib("userId")) == LOGGED_USER_ID) {
-            lastExpenseId = stoi(xmlDocument -> GetAttrib("expenseId"));
             singleExpense = readSingleExpenseFromXML(xmlDocument);
             expenses.push_back(singleExpense);
         }
