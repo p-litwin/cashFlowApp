@@ -150,7 +150,7 @@ void IncomesExpensesManager::displayCustomPeriodBalance() {
     if (startDate <= endDate) {
         displayBalance(startDate, endDate);
     } else {
-        cout << "Data poczatkowa nie moze byc data pozniejsza niz data koncowa!";
+        cout << "Data poczatkowa nie moze byc pozniejsza niz data koncowa!";
         system("pause");
     }
 }

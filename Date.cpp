@@ -66,7 +66,7 @@ string Date::getDateFromUser() {
 }
 
 bool Date::isDateFormatCorrect(string date) {
-    regex correctDateFormat("[2-9][0-9][0-9][0-9]-[0-9][1-9]-[0-3][0-9]");
+    regex correctDateFormat("[2-9][0-9][0-9][0-9]-[0-1][0-9]-[0-3][0-9]");
     if (regex_match(date, correctDateFormat)) {
         return true;
     }
