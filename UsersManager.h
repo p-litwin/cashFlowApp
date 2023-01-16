@@ -11,19 +11,22 @@ using namespace std;
 
 class UsersManager {
     vector<User> users;
-    UsersXMLFile usersXMLFile;
+    UsersXMLfile usersXMLfile;
     int lastUserId;
     int loggedUserId;
-
     User inputNewUserData();
     int generateNewUserId();
     bool isLoginTaken(string login);
+    void loadUsersFromXMLdocument(CMarkup *xmlDocument);
+    User readSingleUserDataFromXML(CMarkup *xmlDocument);
 
 public:
     UsersManager(string usersFileName)
-        : usersXMLFile(usersFileName) {
-        users = usersXMLFile.loadUsersFromFile();
-        lastUserId = usersXMLFile.getLastUserId();
+        : usersXMLfile(usersFileName) {
+        lastUserId = 0;
+        loadUsersFromXMLdocument(usersXMLfile.getXMLdocument());
+//        users = usersXMLFile.loadUsersFromFile();
+//        lastUserId = usersXMLFile.getLastUserId();
     }
     void displayAllUsersData();
     void registerNewUser();
