@@ -10,44 +10,22 @@
 using namespace std;
 
 class Date {
-    string currentDate;
-    string startDateOfCurrentMonth;
-    string endDateOfCurrentMonth;
-    string startDateOfLastMonth;
-    string endDateOfLastMonth;
-    int currentDay;
-    int currentMonth;
-    int currentYear;
-    int currentMonthLength;
-    int lastMonthLenght;
-
-    int determineCurrentDay();
-    int determineCurrentMonth();
-    int determineCurrentYear();
-    int determineMonthLength(int year, int month);
-    bool isSelectedDateValid(string date);
-    bool isDateFormatCorrect(string date);
-    bool isInputMonthCorrect(int year, int month);
-    bool isInputYearCorrect(int year);
-    bool isInputDayCorrect(int year,int month, int day);
+    static int determineCurrentDay();
+    static int determineCurrentMonth();
+    static int determineCurrentYear();
+    static int determineMonthLength(int year, int month);
+    static bool isSelectedDateValid(string date);
+    static bool isDateFormatCorrect(string date);
+    static bool isInputMonthCorrect(int year, int month);
+    static bool isInputYearCorrect(int year);
+    static bool isInputDayCorrect(int year,int month, int day);
 public:
-    Date() {
-        currentDate = determineCurrentDate();
-        currentDay = determineCurrentDay();
-        currentMonth = determineCurrentMonth();
-        currentYear = determineCurrentYear();
-        currentMonthLength = determineMonthLength(currentYear, currentMonth);
-    };
-    string determineCurrentDate();
-    string getCurrentDate();
-    int getCurrentDay();
-    int getCurrentMonth();
-    int getCurrentYear();
-    string getDateFromUser();
-    string getcurrentMonthStartDate();
-    string getCurrentMonthEndDate();
-    string getPreviousMonthStartDate();
-    string getPreviousMonthEndDate();
+    static string determineCurrentDate();
+    static string getDateFromUser();
+    static string getCurrentMonthStartDate();
+    static string getCurrentMonthEndDate();
+    static string getPreviousMonthStartDate();
+    static string getPreviousMonthEndDate();
 };
 
 
