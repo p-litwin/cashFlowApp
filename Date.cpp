@@ -34,24 +34,18 @@ int Date:: determineCurrentDay() {
 }
 
 int  Date::determineMonthLength(int year, int month) {
-    //leap year condition, if month is 2
     if( month == 2) {
         if((year%400==0) || (year%4==0 && year%100!=0))
             return 29;
         else
             return 28;
     }
-    //months which has 31 days
     else if(month == 1 || month == 3 || month == 5 || month == 7 || month == 8
             ||month == 10 || month==12) {
         return 31;
     } else {
         return 30;
     }
-}
-
-string Date::getCurrentDate() {
-    return currentDate;
 }
 
 string Date::getDateFromUser() {
@@ -89,8 +83,8 @@ bool Date::isSelectedDateValid(string date) {
 }
 
 bool Date::isInputMonthCorrect(int year, int month) {
-    bool isMonthInCurrentYearCorrect = (year == getCurrentYear() && month >= 1 && month <= getCurrentMonth() );
-    bool isMonthInEarlierYearCorrect = (year < getCurrentYear() && month >= 1);
+    bool isMonthInCurrentYearCorrect = (year == determineCurrentYear() && month >= 1 && month <= determineCurrentMonth() );
+    bool isMonthInEarlierYearCorrect = (year < determineCurrentYear() && month >= 1);
 
     if ( isMonthInCurrentYearCorrect || isMonthInEarlierYearCorrect ) {
         return true;
@@ -99,7 +93,7 @@ bool Date::isInputMonthCorrect(int year, int month) {
 }
 
 bool Date::isInputYearCorrect(int year) {
-    if (year >= 2000 && year <= getCurrentYear()) {
+    if (year >= 2000 && year <= determineCurrentYear()) {
         return true;
     }
     return false;
@@ -112,27 +106,24 @@ bool Date::isInputDayCorrect(int year,int month, int day) {
     return false;
 }
 
-int Date::getCurrentDay() {
-    return currentDay;
-}
-int Date::getCurrentMonth() {
-    return currentMonth;
-}
-int Date::getCurrentYear() {
-    return currentYear;
-}
-
-string Date::getcurrentMonthStartDate() {
+string Date::getCurrentMonthStartDate() {
+    int currentMonth = determineCurrentMonth();
+    int currentYear = determineCurrentYear();
     string startDateOfCurrentMonth = to_string(currentYear) + "-" + CommonMethods::convertIntToStringWithLeadingZero(currentMonth) + "-01";
     return startDateOfCurrentMonth;
 }
 string Date::getCurrentMonthEndDate() {
+    int currentMonth = determineCurrentMonth();
+    int currentYear = determineCurrentYear();
+    int currentMonthLength = determineMonthLength(currentYear, currentMonth);
     string endDateOfCurrentMonth = to_string(currentYear) + "-" + CommonMethods::convertIntToStringWithLeadingZero(currentMonth) + "-" + to_string(currentMonthLength);
     return endDateOfCurrentMonth;
 }
 
 string Date::getPreviousMonthStartDate() {
     string startDateOfPreviousMonth;
+    int currentMonth = determineCurrentMonth();
+    int currentYear = determineCurrentYear();
     if (currentMonth == 1) {
         startDateOfPreviousMonth = to_string(currentYear - 1) + "-" + CommonMethods::convertIntToStringWithLeadingZero(currentMonth + 11 ) + "-01";
     } else {
@@ -142,6 +133,8 @@ string Date::getPreviousMonthStartDate() {
 }
 string Date::getPreviousMonthEndDate() {
     string endDateOfPreviousMonth;
+    int currentMonth = determineCurrentMonth();
+    int currentYear = determineCurrentYear();
     if (currentMonth == 1) {
         endDateOfPreviousMonth = to_string(currentYear - 1) + "-" + CommonMethods::convertIntToStringWithLeadingZero(currentMonth + 11 ) + "-31";
     } else {

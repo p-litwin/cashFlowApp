@@ -6,14 +6,13 @@ void IncomesExpensesManager::addNewExpense() {
         char selection;
         string item;
         float amount;
-        Date date;
         cout << "Czy chcesz dodac wydatek z dzisiejsza data? T/N: ";
         selection = CommonMethods::getSingleCharacter();
         do {
             if (selection == 'T' || selection == 't') {
-                newExpense.setDate(date.getCurrentDate());
+                newExpense.setDate(Date::determineCurrentDate());
             } else if (selection == 'N' || selection == 'n') {
-                newExpense.setDate(date.getDateFromUser());
+                newExpense.setDate(Date::getDateFromUser());
             } else {
                 cout << "Wybierz T lub N z klawiatury.";
             }
@@ -38,14 +37,13 @@ void IncomesExpensesManager::addNewIncome() {
         char selection;
         string item;
         float amount;
-        Date date;
         cout << "Czy chcesz dodac przychod z dzisiejsza data? T/N: ";
         selection = CommonMethods::getSingleCharacter();
         do {
             if (selection == 'T' || selection == 't') {
-                newIncome.setDate(date.getCurrentDate());
+                newIncome.setDate(Date::determineCurrentDate());
             } else if (selection == 'N' || selection == 'n') {
-                newIncome.setDate(date.getDateFromUser());
+                newIncome.setDate(Date::getDateFromUser());
             } else {
                 cout << "Wybierz T lub N z klawiatury.";
             }
@@ -136,22 +134,19 @@ Expense IncomesExpensesManager::readSingleExpenseFromXML(CMarkup *xmlDocument) {
 }
 
 void IncomesExpensesManager::displayCurrentMonthBalance() {
-    Date date;
-    displayBalance(date.getcurrentMonthStartDate(), date.getCurrentMonthEndDate());
+    displayBalance(Date::getCurrentMonthStartDate(), Date::getCurrentMonthEndDate());
 
 }
 
 void IncomesExpensesManager::displayPreviousMonthBalance() {
-    Date date;
-    displayBalance(date.getPreviousMonthStartDate(), date.getPreviousMonthEndDate());
+    displayBalance(Date::getPreviousMonthStartDate(), Date::getPreviousMonthEndDate());
 }
 
 void IncomesExpensesManager::displayCustomPeriodBalance() {
-    Date date;
     cout << "Data poczatkowa. ";
-    string startDate = date.getDateFromUser();
+    string startDate = Date::getDateFromUser();
     cout << "Data koncowa. ";
-    string endDate = date.getDateFromUser();
+    string endDate = Date::getDateFromUser();
     if (startDate <= endDate) {
         displayBalance(startDate, endDate);
     } else {
