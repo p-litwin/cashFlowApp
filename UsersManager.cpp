@@ -12,19 +12,32 @@ void UsersManager::displayAllUsersData() {
     }
 }
 
-int UsersManager::getLastUserId() {
-    return lastUserId;
+void UsersManager::loadUsersFromXMLdocument(CMarkup *xmlDocument) {
+    User singleUser;
+    xmlDocument -> FindElem("users");
+    xmlDocument -> IntoElem();
+    while (xmlDocument -> FindElem("user")) {
+        lastUserId = stoi(xmlDocument -> GetAttrib("id"));
+        singleUser = readSingleUserDataFromXML(xmlDocument);
+        users.push_back(singleUser);
+    }
 }
 
-void UsersManager::setLastUserId(int userId) {
-    this -> lastUserId = userId;
+User UsersManager::readSingleUserDataFromXML(CMarkup *xmlDocument) {
+    User user;
+    user.setUserId( stoi(xmlDocument -> GetAttrib("id")) );
+    user.setUserName(xmlDocument -> GetAttrib("name"));
+    user.setUserSurname(xmlDocument -> GetAttrib("surname"));
+    user.setLogin(xmlDocument -> GetAttrib("login"));
+    user.setPassword(xmlDocument -> GetAttrib("password"));
+    return user;
 }
 
 void UsersManager::registerNewUser() {
     User newUser = inputNewUserData();
     users.push_back(newUser);
-    lastUserId = newUser.getUserId();
-    usersXMLFile.saveUsersToXMLfile(newUser);
+    usersXMLfile.addNewUserToXMLdocument(newUser);
+    usersXMLfile.saveXMLdocumentToFile();
     cout << endl << "Konto zalozono pomyslnie" << endl << endl;
     system("pause");
 }
@@ -32,7 +45,7 @@ void UsersManager::registerNewUser() {
 User UsersManager::inputNewUserData() {
 
     User newUser;
-    newUser.setUserId(generateNewUserId());
+    newUser.setUserId(++lastUserId);
     cout << "Podaj Imie: ";
     string name = CommonMethods::getLineOfText();
     newUser.setUserName(name);
@@ -51,13 +64,6 @@ User UsersManager::inputNewUserData() {
     password = CommonMethods::getLineOfText();
     newUser.setPassword(password);
     return newUser;
-}
-
-int UsersManager::generateNewUserId() {
-    if (users.empty() == true)
-        return 1;
-    else
-        return lastUserId + 1;
 }
 
 bool UsersManager::isLoginTaken(string login) {
@@ -121,7 +127,8 @@ void UsersManager::changePassword() {
     for (size_t i = 0; i < users.size(); i++ ) {
         if (users[i].getUserId() == loggedUserId) {
             users[i].setPassword(newPassword);
-            usersXMLFile.updatePasswordInXMLfile(loggedUserId, newPassword);
+            usersXMLfile.updatePasswordInXMLdocument(loggedUserId, newPassword);
+            usersXMLfile.saveXMLdocumentToFile();
             return;
         }
     }
