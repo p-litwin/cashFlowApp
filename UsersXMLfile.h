@@ -10,29 +10,13 @@
 using namespace std;
 
 class UsersXMLfile:public XMLfile {
-
+    bool findUserInXMLbyId(int userId);
 public:
     UsersXMLfile(string fileName)
-    :XMLfile(fileName) {
+        :XMLfile(fileName) {
     };
     void addNewUserToXMLdocument(User newUser);
+    void updatePasswordInXMLdocument(int loggedUserId, string newPassword);
 };
-
-//    User readSingleUserDataFromFile(CMarkup *file);
-//    bool findUserElementById(CMarkup &xml, int userId);
-//
-//public:
-//    UsersXMLFile(string fileName)
-//        : USERS_FILE_NAME(fileName) {
-//        lastUserId = 0;
-//    };
-//
-//    vector<User> loadUsersFromFile();
-//    int getLastUserId();
-//    void saveUsersToXMLfile(User newUser);
-//    void updatePasswordInXMLfile(int loggedUserId, string newPassword);
-//};
-
-
 
 #endif // USERSXMLFILE_H

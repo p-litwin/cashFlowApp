@@ -12,14 +12,6 @@ void UsersManager::displayAllUsersData() {
     }
 }
 
-int UsersManager::getLastUserId() {
-    return lastUserId;
-}
-
-void UsersManager::setLastUserId(int userId) {
-    this -> lastUserId = userId;
-}
-
 void UsersManager::loadUsersFromXMLdocument(CMarkup *xmlDocument) {
     User singleUser;
     xmlDocument -> FindElem("users");
@@ -44,8 +36,8 @@ User UsersManager::readSingleUserDataFromXML(CMarkup *xmlDocument) {
 void UsersManager::registerNewUser() {
     User newUser = inputNewUserData();
     users.push_back(newUser);
-    lastUserId = newUser.getUserId();
-    //usersXMLFile.saveUsersToXMLfile(newUser);
+    usersXMLfile.addNewUserToXMLdocument(newUser);
+    usersXMLfile.saveXMLdocumentToFile();
     cout << endl << "Konto zalozono pomyslnie" << endl << endl;
     system("pause");
 }
@@ -53,7 +45,7 @@ void UsersManager::registerNewUser() {
 User UsersManager::inputNewUserData() {
 
     User newUser;
-    newUser.setUserId(generateNewUserId());
+    newUser.setUserId(++lastUserId);
     cout << "Podaj Imie: ";
     string name = CommonMethods::getLineOfText();
     newUser.setUserName(name);
@@ -72,13 +64,6 @@ User UsersManager::inputNewUserData() {
     password = CommonMethods::getLineOfText();
     newUser.setPassword(password);
     return newUser;
-}
-
-int UsersManager::generateNewUserId() {
-    if (users.empty() == true)
-        return 1;
-    else
-        return lastUserId + 1;
 }
 
 bool UsersManager::isLoginTaken(string login) {
@@ -142,7 +127,8 @@ void UsersManager::changePassword() {
     for (size_t i = 0; i < users.size(); i++ ) {
         if (users[i].getUserId() == loggedUserId) {
             users[i].setPassword(newPassword);
-//            usersXMLFile.updatePasswordInXMLfile(loggedUserId, newPassword);
+            usersXMLfile.updatePasswordInXMLdocument(loggedUserId, newPassword);
+            usersXMLfile.saveXMLdocumentToFile();
             return;
         }
     }
