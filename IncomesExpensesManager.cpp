@@ -62,20 +62,6 @@ void IncomesExpensesManager::addNewIncome() {
     }
 }
 
-void IncomesExpensesManager::displayExpense(int index) {
-    cout << expenses[index].getId() << endl;
-    cout << expenses[index].getDate() << endl;
-    cout << expenses[index].getItem() << endl;
-    cout << expenses[index].getAmount() << endl;
-}
-
-void IncomesExpensesManager::displayIncome(int index) {
-    cout << incomes[index].getId() << endl;
-    cout << incomes[index].getDate() << endl;
-    cout << incomes[index].getItem() << endl;
-    cout << incomes[index].getAmount() << endl;
-}
-
 void IncomesExpensesManager::loadIncomesForLoggedUser(CMarkup *xmlDocument) {
     Income singleIncome;
     xmlDocument -> FindElem("incomes");
@@ -159,25 +145,17 @@ void IncomesExpensesManager::displayCustomPeriodBalance() {
 void IncomesExpensesManager::displayBalance(string startDate, string endDate) {
     system("cls");
     balance = new Balance(startDate, endDate);
-    balance -> loadIncomesForSelectedPeriod(getIncomesOfUser());
+    balance -> loadIncomesForSelectedPeriod(incomes);
     balance -> sortIncomesByDate();
     cout << "=============================================================" << endl;
     cout << "==========" << "Bilans za okres " << startDate << " - " << endDate << "===========" << endl;
     cout << "=============================================================" << endl << endl;
     balance -> displayIncomes();
-    balance -> loadExpensesForSelectedPeriod(getExpensesOfUser());
+    balance -> loadExpensesForSelectedPeriod(expenses);
     balance -> sortExpensesByDate();
     balance -> displayExpenses();
     balance -> displayCashflow();
     delete balance;
     balance = NULL;
     system("pause");
-}
-
-vector<Income> IncomesExpensesManager::getIncomesOfUser() {
-    return incomes;
-}
-
-vector<Expense> IncomesExpensesManager::getExpensesOfUser() {
-    return expenses;
 }
