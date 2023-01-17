@@ -1,5 +1,5 @@
-<diagram program="umletino" version="15.0.0"><zoom_level>6</zoom_level><help_text>
-</help_text><element><id>UMLClass</id><coordinates><x>546</x><y>0</y><w>198</w><h>126</h></coordinates><panel_attributes>CashFlowApp
+<diagram program="umletino" version="15.0.0"><zoom_level>10</zoom_level><help_text>
+</help_text><element><id>UMLClass</id><coordinates><x>740</x><y>0</y><w>330</w><h>210</h></coordinates><panel_attributes>CashFlowApp
 --
 usersManager: UsersManager
 *incomesExpensesManager:  IncomesExpensesManager
@@ -7,156 +7,158 @@ USERS_FILE_NAME: String
 --
 CashFlowApp()
 ~CashFlowApp()
-+userLogon(): void
++ userLogon(): void
 - showLogonMenu(): void
-- chooseOptionFromLogonMenu(): char
+- chooseOptionFromLogonMenu(): Char
 - showMainMenu(): void
-- chooseOptionFromMainMenu(): char
-- logoutUser():  void</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>906</x><y>348</y><w>132</w><h>174</h></coordinates><panel_attributes>UsersManager
+- chooseOptionFromMainMenu(): Char
+- logoutUser():  void</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>1340</x><y>580</y><w>220</w><h>290</h></coordinates><panel_attributes>UsersManager
 --
 users: &lt;vector&gt;User
 usersXMLFile: UsersXMLFile
-lastUserId: int
-loggedUserId: int
+lastUserId: Integer
+loggedUserId: Integer
 --
 UsersManager()
 + displayAllUsersData(): void
 + registerNewUser(): void
-+ getLoggedUserId(): int
++ getLoggedUserId(): Integer
 + userLogon(): void
 + logoutUser(): void
-+ isUserLoggedIn(): bool
++ isUserLoggedIn(): Bool
 + changePassword(): void
 - loadUsersFromXMLdocument(*CMarkup): void
 - readSingleUserDataFromXML(*CMarkup): User
 - inputNewUserData(): User
-- isLoginTaken(string): bool
-</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>444</x><y>834</y><w>180</w><h>108</h></coordinates><panel_attributes>IncomesXMLfile
+- isLoginTaken(String): Bool
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>570</x><y>1390</y><w>300</w><h>130</h></coordinates><panel_attributes>IncomesXMLfile
 --
 incomesXMLdocument: CMarkup
 --
 IncomesXMLFile()
-+ addNewExpenseToXMLdocument(Expense): void</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>654</x><y>834</y><w>174</w><h>108</h></coordinates><panel_attributes>ExpensesXMLfile
++ addNewExpenseToXMLdocument(Expense): void</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>920</x><y>1390</y><w>290</w><h>130</h></coordinates><panel_attributes>ExpensesXMLfile
 --
 
 --
 ExpensesXMLFile()
-+ addNewIncomeToXMLdocument(Income): void</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>1086</x><y>348</y><w>114</w><h>156</h></coordinates><panel_attributes>User
++ addNewIncomeToXMLdocument(Income): void</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>1640</x><y>580</y><w>190</w><h>270</h></coordinates><panel_attributes>User
 --
 userId: Integer
-userName: string
-userSurname: string
-login: string
-password: string
+userName: String
+userSurname: String
+login: String
+password: String
 --
 + getUserId(); String
 + getUserName(): String
 + getPassword(): String
 + getUserName(): String
 + getUserSurname(): String
-+ setUserId(int): void
-+ setLogin(string): void
-+ setPassword(string): void
-+ setUserName(string): void
-+ setUserSurname(string): void</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>228</x><y>378</y><w>180</w><h>186</h></coordinates><panel_attributes>IncomesExpensesManager
++ setUserId(Integer): void
++ setLogin(String): void
++ setPassword(String): void
++ setUserName(String): void
++ setUserSurname(String): void</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>210</x><y>630</y><w>300</w><h>340</h></coordinates><panel_attributes>IncomesExpensesManager
 --
-LOGGED_USER_ID: int
+LOGGED_USER_ID: Integer
 incomes:  &lt;vector&gt;Income
 expenses: &lt;vector&gt;Expense
 lastIncomeId: Integer
 lastExpenseId: Integer
-incomesXMLfile: IncomesXMLfile
-expensesXMLfile: ExpensesXMLfile
+*incomesXMLfile: IncomesXMLfile
+*expensesXMLfile: ExpensesXMLfile
+*balance: Balance
 --
 IncomesExpensesManager()
 ~IncomesExpensesManager()
-+ addNewIncome(): Void
-+ addNewExpense(): Void
++ addNewIncome(): void
++ addNewExpense(): void
 + loadIncomesForLoggedUser("CMarkup): void
 + loadExpensesForLoggedUser("CMarkup): void
-+ displayExpense(int): void
-+ displayIncome(int): void
++ displayCurrentMonthBalance(): void
++ displayPreviousMonthBalance(): void
++ displayCustomPeriodBalance(): void
 - readSingleIncomeFromXML(*CMarkup): Income
 - readSingleIncomeFromXML(*CMarkup): Expense
-- displatBalance(): void
-</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>294</x><y>42</y><w>264</w><h>348</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-</panel_attributes><additional_attributes>420;11;10;10;10;560</additional_attributes></element><element><id>Relation</id><coordinates><x>246</x><y>558</y><w>204</w><h>342</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-</panel_attributes><additional_attributes>10;10;10;550;320;550</additional_attributes></element><element><id>Relation</id><coordinates><x>312</x><y>558</y><w>432</w><h>288</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-</panel_attributes><additional_attributes>10;10;10;380;700;380;700;460</additional_attributes></element><element><id>Relation</id><coordinates><x>354</x><y>558</y><w>102</w><h>156</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;-</panel_attributes><additional_attributes>10;10;10;240;150;240</additional_attributes></element><element><id>Relation</id><coordinates><x>966</x><y>516</y><w>18</w><h>330</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;-</panel_attributes><additional_attributes>10;10;10;530</additional_attributes></element><element><id>Relation</id><coordinates><x>1032</x><y>390</y><w>66</w><h>18</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;-</panel_attributes><additional_attributes>10;10;90;10</additional_attributes></element><element><id>Relation</id><coordinates><x>738</x><y>42</y><w>276</w><h>318</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;-</panel_attributes><additional_attributes>10;11;440;10;440;510</additional_attributes></element><element><id>UMLClass</id><coordinates><x>702</x><y>144</y><w>180</w><h>102</h></coordinates><panel_attributes>/CommonMethods/
+- displayBalance(): void
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>320</x><y>70</y><w>440</w><h>580</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-</panel_attributes><additional_attributes>420;11;10;10;10;560</additional_attributes></element><element><id>Relation</id><coordinates><x>280</x><y>960</y><w>310</w><h>540</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-</panel_attributes><additional_attributes>10;10;10;520;290;520</additional_attributes></element><element><id>Relation</id><coordinates><x>350</x><y>960</y><w>720</w><h>450</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-</panel_attributes><additional_attributes>10;10;10;350;700;350;700;430</additional_attributes></element><element><id>Relation</id><coordinates><x>420</x><y>960</y><w>170</w><h>230</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;-</panel_attributes><additional_attributes>10;10;10;210;150;210</additional_attributes></element><element><id>Relation</id><coordinates><x>1440</x><y>860</y><w>30</w><h>550</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;-</panel_attributes><additional_attributes>10;10;10;530</additional_attributes></element><element><id>Relation</id><coordinates><x>1550</x><y>650</y><w>110</w><h>30</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;-</panel_attributes><additional_attributes>10;10;90;10</additional_attributes></element><element><id>Relation</id><coordinates><x>1060</x><y>70</y><w>460</w><h>530</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;-</panel_attributes><additional_attributes>10;11;440;10;440;510</additional_attributes></element><element><id>UMLClass</id><coordinates><x>1000</x><y>240</y><w>300</w><h>170</h></coordinates><panel_attributes>/CommonMethods/
 --
-_getLineOfText()_
-_getSingleCharacter()_
-_convertIntToStringWithLeadingZeros(int): string_
-_getMandatoryLineOfText(String): string_
-_getMandatoryFloatValue(): float_
-_isInputValidFloatWithComma(string): bool_
-_isInputValidFloatWithDot(string): bool_
-_convertStringToFloat(string):  float_
-_convertFloatToString(float): String_</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>330</x><y>174</y><w>384</w><h>216</h></coordinates><panel_attributes>lt=&lt;-</panel_attributes><additional_attributes>10;340;10;10;620;10</additional_attributes></element><element><id>UMLClass</id><coordinates><x>444</x><y>492</y><w>102</w><h>150</h></coordinates><panel_attributes>IncomeExpense
+_getLineOfText(): String_
+_getSingleCharacter(): Char_
+_convertIntToStringWithLeadingZeros(Integer): String_
+_getMandatoryLineOfText(String): String_
+_getMandatoryFloatValue(): Float_
+_isInputValidFloatWithComma(String): Bool_
+_isInputValidFloatWithDot(String): Bool_
+_convertStringToFloat(String):  Float_
+_convertFloatToString(Float): String_</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>380</x><y>290</y><w>640</w><h>360</h></coordinates><panel_attributes>lt=&lt;-</panel_attributes><additional_attributes>10;340;10;10;620;10</additional_attributes></element><element><id>UMLClass</id><coordinates><x>570</x><y>820</y><w>170</w><h>250</h></coordinates><panel_attributes>IncomeExpense
 --
-id: int
-userId: int
+id: Integer
+userId: Integer
 date: String
 item: String
-amount: float
+amount: Float
 --
-+ getId(): int
++ getId(): Integer
 + getDate(): String
 + getItem: String
-+ getAmount: float
-+ setId(int): void
-+ setUserId(int): void
++ getAmount: Float
++ setId(Integer): void
++ setUserId(Integer): void
 + setDate(String): Void
 + setItem(String): Void
-+ setAmount(Float): Void</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>486</x><y>198</y><w>150</w><h>150</h></coordinates><panel_attributes>/Date/
++ setAmount(Float): Void</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>640</x><y>330</y><w>300</w><h>250</h></coordinates><panel_attributes>/Date/
 --
 _+ determineCurrentDate: String_
 _+ getDateFromUser(): String_
 _- isInputYearCorrect(): Bool_
 _- isInputMonthCorrect(): Bool_
 _- isInputDayCorrect(): Bool_
-_- determineCurrentDay(): Int_
-_- determineCurrentMonth(): Int_
-_- determineCurrentYear(): Int_
-_- determineMonthLength(int, int): Int_
-_- isSelectedDateValid(string): Bool_
-_- isDateFormatCorrect(string): Bool_
-_- isInputMonthCorrect(int):  Bool_
-_- isInputYearCorrect(int): Bool_
-_- isInputDayCorrect(int, int): Bool_</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>444</x><y>414</y><w>102</w><h>42</h></coordinates><panel_attributes>Income
+_- determineCurrentDay(): Integer_
+_- determineCurrentMonth(): Integer_
+_- determineCurrentYear(): Integer_
+_- determineMonthLength(Integer, Integer): Integer_
+_- isSelectedDateValid(String): Bool_
+_- isDateFormatCorrect(String): Bool_
+_- isInputMonthCorrect(Integer):  Bool_
+_- isInputYearCorrect(Integer): Bool_
+_- isInputDayCorrect(Integer, Integer): Bool_</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>570</x><y>690</y><w>170</w><h>70</h></coordinates><panel_attributes>Income
 --
 
 --
-</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>444</x><y>678</y><w>102</w><h>42</h></coordinates><panel_attributes>Expense
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>570</x><y>1130</y><w>170</w><h>70</h></coordinates><panel_attributes>Expense
 --
 
 --
-</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>402</x><y>426</y><w>54</w><h>18</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;-</panel_attributes><additional_attributes>10;10;70;10</additional_attributes></element><element><id>Relation</id><coordinates><x>492</x><y>450</y><w>18</w><h>54</h></coordinates><panel_attributes>lt=-&gt;&gt;</panel_attributes><additional_attributes>10;10;10;70</additional_attributes></element><element><id>Relation</id><coordinates><x>486</x><y>636</y><w>18</w><h>54</h></coordinates><panel_attributes>lt=-&gt;&gt;</panel_attributes><additional_attributes>10;70;10;10</additional_attributes></element><element><id>UMLClass</id><coordinates><x>684</x><y>1014</y><w>144</w><h>72</h></coordinates><panel_attributes>XMLfile
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>500</x><y>710</y><w>90</w><h>30</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;-</panel_attributes><additional_attributes>10;10;70;10</additional_attributes></element><element><id>Relation</id><coordinates><x>650</x><y>750</y><w>30</w><h>90</h></coordinates><panel_attributes>lt=-&gt;&gt;</panel_attributes><additional_attributes>10;10;10;70</additional_attributes></element><element><id>Relation</id><coordinates><x>640</x><y>1060</y><w>30</w><h>90</h></coordinates><panel_attributes>lt=-&gt;&gt;</panel_attributes><additional_attributes>10;70;10;10</additional_attributes></element><element><id>UMLClass</id><coordinates><x>970</x><y>1650</y><w>240</w><h>120</h></coordinates><panel_attributes>XMLfile
 --
 XML_FILENAME: String
 xmlDocument: CMarkup
 --
 XMLfile()
-+ saveXMLdocumentToFile(): bool
-+ getXMLdocument(): *CMarkup</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>570</x><y>936</y><w>156</w><h>90</h></coordinates><panel_attributes>lt=-&gt;&gt;</panel_attributes><additional_attributes>10;10;10;50;240;50;240;130</additional_attributes></element><element><id>Relation</id><coordinates><x>756</x><y>936</y><w>18</w><h>90</h></coordinates><panel_attributes>lt=-&gt;&gt;</panel_attributes><additional_attributes>10;10;10;130</additional_attributes></element><element><id>UMLClass</id><coordinates><x>618</x><y>486</y><w>180</w><h>150</h></coordinates><panel_attributes>Balance
++ saveXMLdocumentToFile(): Bool
++ getXMLdocument(): *CMarkup</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>780</x><y>1510</y><w>260</w><h>160</h></coordinates><panel_attributes>lt=-&gt;&gt;</panel_attributes><additional_attributes>10;10;10;70;240;70;240;140</additional_attributes></element><element><id>Relation</id><coordinates><x>1090</x><y>1510</y><w>30</w><h>160</h></coordinates><panel_attributes>lt=-&gt;&gt;</panel_attributes><additional_attributes>10;10;10;140</additional_attributes></element><element><id>UMLClass</id><coordinates><x>860</x><y>810</y><w>300</w><h>250</h></coordinates><panel_attributes>Balance
 --
-START_DATE: string
-END_DATE: string
+START_DATE: String
+END_DATE: String
 incomes: &lt;vector&gt; Income
 expesnes &lt;vector&gt; Expenses
-totalIncomes: float
-totalExpenses: float
-cashFlow: float
+totalIncomes: Float
+totalExpenses: Float
+cashFlow: Float
 --
 Balance()
 ~Balance()
-- addToTotalIncomes(float): void
-- addToTotalExpenses(float): void
+- addToTotalIncomes(Float): void
+- addToTotalExpenses(Float): void
 - calculateCashFlow(): void
-_- dateCompareIncome(): bool_
-_- dateCompareExpense(): bool_
-</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>402</x><y>384</y><w>288</w><h>114</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-</panel_attributes><additional_attributes>10;10;460;10;460;170</additional_attributes></element><element><id>Relation</id><coordinates><x>384</x><y>222</y><w>114</w><h>168</h></coordinates><panel_attributes>lt=.&gt;</panel_attributes><additional_attributes>10;260;10;10;170;10</additional_attributes></element><element><id>Relation</id><coordinates><x>876</x><y>210</y><w>66</w><h>150</h></coordinates><panel_attributes>lt=&lt;-</panel_attributes><additional_attributes>90;230;90;10;10;10</additional_attributes></element><element><id>Relation</id><coordinates><x>540</x><y>432</y><w>90</w><h>102</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;-</panel_attributes><additional_attributes>130;150;70;150;70;10;10;10</additional_attributes></element><element><id>Relation</id><coordinates><x>540</x><y>630</y><w>108</w><h>84</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;-</panel_attributes><additional_attributes>160;10;160;120;10;120</additional_attributes></element><element><id>Relation</id><coordinates><x>630</x><y>216</y><w>84</w><h>18</h></coordinates><panel_attributes>lt=&lt;-</panel_attributes><additional_attributes>10;10;120;10</additional_attributes></element><element><id>UMLClass</id><coordinates><x>852</x><y>834</y><w>168</w><h>102</h></coordinates><panel_attributes>UsersXMLFile
+_- dateCompareIncome(): Bool_
+_- dateCompareExpense(): Bool_
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>500</x><y>640</y><w>480</w><h>190</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-</panel_attributes><additional_attributes>10;10;460;10;460;170</additional_attributes></element><element><id>Relation</id><coordinates><x>470</x><y>370</y><w>190</w><h>280</h></coordinates><panel_attributes>lt=.&gt;</panel_attributes><additional_attributes>10;260;10;10;170;10</additional_attributes></element><element><id>Relation</id><coordinates><x>1290</x><y>350</y><w>110</w><h>250</h></coordinates><panel_attributes>lt=&lt;-</panel_attributes><additional_attributes>90;230;90;10;10;10</additional_attributes></element><element><id>Relation</id><coordinates><x>730</x><y>720</y><w>150</w><h>170</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;-</panel_attributes><additional_attributes>130;150;70;150;70;10;10;10</additional_attributes></element><element><id>Relation</id><coordinates><x>730</x><y>1050</y><w>180</w><h>140</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;-</panel_attributes><additional_attributes>160;10;160;120;10;120</additional_attributes></element><element><id>Relation</id><coordinates><x>930</x><y>360</y><w>90</w><h>30</h></coordinates><panel_attributes>lt=&lt;-</panel_attributes><additional_attributes>10;10;70;10</additional_attributes></element><element><id>UMLClass</id><coordinates><x>1250</x><y>1390</y><w>330</w><h>130</h></coordinates><panel_attributes>UsersXMLFile
 --
 
 --
 UsersXMLFile()
 + addNewUserToXMLdocument(User): void
-+ updatePasswordInXMLdocument(Int, String): void
-- findUserInXMLbyId(Int): bool</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>804</x><y>930</y><w>144</w><h>96</h></coordinates><panel_attributes>lt=-&gt;&gt;</panel_attributes><additional_attributes>220;10;220;50;10;50;10;140</additional_attributes></element><element><id>Relation</id><coordinates><x>1014</x><y>498</y><w>168</w><h>402</h></coordinates><panel_attributes>lt=&lt;.</panel_attributes><additional_attributes>260;10;260;650;10;650</additional_attributes></element><element><id>Relation</id><coordinates><x>504</x><y>714</y><w>282</w><h>132</h></coordinates><panel_attributes>lt=&lt;.</panel_attributes><additional_attributes>10;10;10;60;450;60;450;200</additional_attributes></element><element><id>Relation</id><coordinates><x>420</x><y>444</y><w>138</w><h>402</h></coordinates><panel_attributes>lt=&lt;.</panel_attributes><additional_attributes>40;10;10;10;10;620;210;620;210;650</additional_attributes></element><element><id>Relation</id><coordinates><x>636</x><y>276</y><w>90</w><h>228</h></coordinates><panel_attributes>lt=.&gt;</panel_attributes><additional_attributes>130;360;130;10;10;10</additional_attributes></element></diagram>
++ updatePasswordInXMLdocument(Integer, String): void
+- findUserInXMLbyId(Integer): Bool</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>1170</x><y>1510</y><w>240</w><h>160</h></coordinates><panel_attributes>lt=-&gt;&gt;</panel_attributes><additional_attributes>220;10;220;70;10;70;10;140</additional_attributes></element><element><id>Relation</id><coordinates><x>1570</x><y>840</y><w>230</w><h>660</h></coordinates><panel_attributes>lt=&lt;.</panel_attributes><additional_attributes>210;10;210;640;10;640</additional_attributes></element><element><id>Relation</id><coordinates><x>670</x><y>1190</y><w>470</w><h>220</h></coordinates><panel_attributes>lt=&lt;.</panel_attributes><additional_attributes>10;10;10;60;450;60;450;200</additional_attributes></element><element><id>Relation</id><coordinates><x>530</x><y>740</y><w>230</w><h>670</h></coordinates><panel_attributes>lt=&lt;.</panel_attributes><additional_attributes>40;10;10;10;10;620;210;620;210;650</additional_attributes></element><element><id>Relation</id><coordinates><x>930</x><y>460</y><w>110</w><h>370</h></coordinates><panel_attributes>lt=.&gt;</panel_attributes><additional_attributes>90;350;90;10;10;10</additional_attributes></element></diagram>
