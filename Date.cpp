@@ -84,7 +84,7 @@ bool Date::isSelectedDateValid(string date) {
 
 bool Date::isInputMonthCorrect(int year, int month) {
     bool isMonthInCurrentYearCorrect = (year == determineCurrentYear() && month >= 1 && month <= determineCurrentMonth() );
-    bool isMonthInEarlierYearCorrect = (year < determineCurrentYear() && month >= 1);
+    bool isMonthInEarlierYearCorrect = (year < determineCurrentYear() && month >= 1 && month <= 12);
 
     if ( isMonthInCurrentYearCorrect || isMonthInEarlierYearCorrect ) {
         return true;
