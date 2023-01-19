@@ -64,7 +64,7 @@ float CommonMethods::getMandatoryFloatValue() {
 }
 
 bool CommonMethods::isInputValidFloatWithComma(string input) {
-    regex floatWithComma("[0-9]*[,]?([0-9]){0,2}");
+    regex floatWithComma("([0-9]+)|([0-9]*[,][0-9]{1,2})");
     if (regex_match(input, floatWithComma)) {
         return true;
     }
@@ -72,7 +72,7 @@ bool CommonMethods::isInputValidFloatWithComma(string input) {
 }
 
 bool CommonMethods::isInputValidFloatWithDot(string input) {
-    regex floatWithDot("[0-9]*[.]?([0-9]){0,2}");
+    regex floatWithDot("([0-9]+)|([0-9]*[.][0-9]{1,2})");
     if (regex_match(input, floatWithDot)) {
         return true;
     }
@@ -80,8 +80,8 @@ bool CommonMethods::isInputValidFloatWithDot(string input) {
 }
 
 float CommonMethods::convertStringToFloat(string input) {
-    regex floatWithDot("[0-9]*[.]?([0-9]){0,2}");
-    regex floatWithComma("[0-9]*[,]?([0-9]){0,2}");
+    regex floatWithDot("([0-9]+)|([0-9]*[.][0-9]{1,2})");
+    regex floatWithComma("([0-9]+)|([0-9]*[,][0-9]{1,2})");
     if (regex_match(input, floatWithDot)) {
         return stof(input);
     } else if (regex_match(input, floatWithComma)) {
